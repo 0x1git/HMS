@@ -52,11 +52,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/chart-enhancements.css">
     <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -66,33 +66,38 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
+
     <title>Golden Palace - Admin </title>
+    <title>Golden Palace - Dashboard</title>
+
 </head>
 <body>
-   <div class="databox">
-        <div class="box roombookbox">
-          <h2>Total Booked Room</h1>  
-          <h1><?php echo $roombookrow ?> / <?php echo $roomrow ?></h1>
-        </div>
-        <div class="box guestbox">
-        <h2>Total Staff</h1>  
-          <h1><?php echo $staffrow ?></h1>
-        </div>
-        <div class="box profitbox">
-        <h2>Profit</h1>  
-          <h1><?php echo $tot?> <span>&#8377</span></h1>
-        </div>
-    </div>
-    <div class="chartbox">
-        <div class="bookroomchart">
-            <canvas id="bookroomchart"></canvas>
-            <h3 style="text-align: center;margin:10px 0;">Booked Room</h3>
-        </div>
-        <div class="profitchart" >
-            <div id="profitchart"></div>
-            <h3 style="text-align: center;margin:10px 0;">Profit</h3>
-        </div>
-    </div>
+   <div class="dashboard-container">
+     <div class="databox">
+          <div class="box roombookbox">
+            <h2>Room Occupancy</h2>  
+            <h1><?php echo $roombookrow ?> / <?php echo $roomrow ?></h1>
+          </div>
+          <div class="box guestbox">
+            <h2>Staff Members</h2>  
+            <h1><?php echo $staffrow ?></h1>
+          </div>
+          <div class="box profitbox">
+            <h2>Revenue</h2>  
+            <h1><?php echo $tot?> <span>&#8377</span></h1>
+          </div>
+      </div>
+      <div class="chartbox">
+          <div class="bookroomchart">
+              <canvas id="bookroomchart"></canvas>
+              <h3>Room Bookings by Category</h3>
+          </div>
+          <div class="profitchart" >
+              <div id="profitchart"></div>
+              <h3>Revenue Trends</h3>
+          </div>
+      </div>
+   </div>
 </body>
 
 
@@ -104,18 +109,17 @@
           'Guest House',
           'Single Room',
         ];
-      
         const data = {
           labels: labels,
           datasets: [{
-            label: 'My First dataset',
+            label: 'Room Bookings',
             backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(153, 102, 255, 1)',
+                'rgba(201, 165, 92, 0.8)',   // Gold
+                'rgba(139, 163, 201, 0.8)',  // Blue
+                'rgba(108, 168, 130, 0.8)',  // Green
+                'rgba(147, 126, 159, 0.8)',  // Purple
             ],
-            borderColor: 'black',
+            borderColor: 'rgba(0, 0, 0, 0.1)',
             data: [<?php echo $chartroom1row ?>,<?php echo $chartroom2row ?>,<?php echo $chartroom3row ?>,<?php echo $chartroom4row ?>],
           }]
         };
@@ -123,7 +127,22 @@
         const doughnutchart = {
           type: 'doughnut',
           data: data,
-          options: {}
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  color: 'rgba(233, 234, 239, 0.8)',
+                  font: {
+                    family: 'Montserrat',
+                    size: 12
+                  }
+                }
+              }
+            }
+          }
         };
         
       const myChart = new Chart(
@@ -137,13 +156,20 @@ Morris.Bar({
  data:[<?php echo $chart_data;?>],
  xkey:'date',
  ykeys:['profit'],
- labels:['Profit'],
+ labels:['Revenue'],
  hideHover:'auto',
  stacked:true,
  barColors:[
-  'rgba(153, 102, 255, 1)',
- ]
+  'rgba(201, 165, 92, 0.8)', // Gold
+ ],
+ resize: true,
+ padding: 10,
+ gridTextColor: 'rgba(233, 234, 239, 0.8)',
+ gridTextFamily: 'Montserrat',
+ gridTextSize: 12
 });
 </script>
+
+<script src="./javascript/chart-responsiveness.js"></script>
 
 </html>

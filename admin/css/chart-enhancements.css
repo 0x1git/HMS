@@ -1,0 +1,57 @@
+/* Additional styles for improved landscape layout */
+.chartbox > div {
+    position: relative;
+}
+
+.bookroomchart canvas {
+    margin: 0 auto;
+}
+
+/* Ensure charts have proper space */
+#profitchart svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Smooth transitions when resizing */
+.chartbox, .databox, .box, #profitchart, canvas#bookroomchart {
+    transition: all 0.3s ease;
+}
+
+/* Improve chart containers */
+.chartbox .bookroomchart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Enhanced chart styling */
+.morris-hover.morris-default-style {
+    background: rgba(13, 26, 66, 0.9);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    color: var(--light-text);
+    padding: 8px 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.morris-hover.morris-default-style .morris-hover-row-label {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Small screen adjustments */
+@media (max-width: 500px) {
+    .databox {
+        flex-wrap: wrap;
+    }
+    
+    .databox .box {
+        min-width: 100%;
+        height: 140px;
+    }
+    
+    body {
+        padding: 15px;
+    }
+}

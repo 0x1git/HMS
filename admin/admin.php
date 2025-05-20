@@ -17,8 +17,7 @@ if($usermail == true){
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/admin.css">
@@ -27,31 +26,40 @@ if($usermail == true){
     <link rel="stylesheet" href="../css/flash.css">
     <!-- fontowesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     <title>Golden Palace - Admin</title>
+
+    <title>Golden Palace - Admin Dashboard</title>
+
 </head>
 
-<body>
-    <!-- mobile view -->
+<body>    <!-- mobile view -->
     <div id="mobileview">
-        <h5>Admin panel doesn't show in mobile view</h4>
+        <h5>Admin panel is not available in mobile view. Please use a desktop or laptop.</h5>
     </div>
   
     <!-- nav bar -->
+
     <nav class="uppernav">        <div class="logo">
             <img class="bluebirdlogo" src="../image/goldenpalacelogo-glow.png" alt="logo">
+
+    <nav class="uppernav">
+        <div class="logo">
+            <img class="bluebirdlogo" src="../image/goldenpalacelogo-glow.png" alt="Golden Palace logo">
+
             <p>GOLDEN PALACE</p>
         </div>
         <div class="logout">
-        <a href="../logout.php"><button class="btn btn-primary">Logout</button></a>
+            <a href="../logout.php"><button class="btn btn-primary">Logout</button></a>
         </div>
     </nav>
     <nav class="sidenav">
         <ul>
-            <li class="pagebtn active"><img src="../image/icon/dashboard.png">&nbsp&nbsp&nbsp Dashboard</li>
-            <li class="pagebtn"><img src="../image/icon/bed.png">&nbsp&nbsp&nbsp Room Booking</li>
-            <li class="pagebtn"><img src="../image/icon/wallet.png">&nbsp&nbsp&nbsp Payment</li>            
-            <li class="pagebtn"><img src="../image/icon/bedroom.png">&nbsp&nbsp&nbsp Rooms</li>
-            <li class="pagebtn"><img src="../image/icon/staff.png">&nbsp&nbsp&nbsp Staff</li>
+            <li class="pagebtn active"><img src="../image/icon/dashboard.png" alt="Dashboard icon">&nbsp;&nbsp;&nbsp;Dashboard</li>
+            <li class="pagebtn"><img src="../image/icon/bed.png" alt="Room booking icon">&nbsp;&nbsp;&nbsp;Room Booking</li>
+            <li class="pagebtn"><img src="../image/icon/wallet.png" alt="Payment icon">&nbsp;&nbsp;&nbsp;Payment</li>            
+            <li class="pagebtn"><img src="../image/icon/bedroom.png" alt="Rooms icon">&nbsp;&nbsp;&nbsp;Rooms</li>
+            <li class="pagebtn"><img src="../image/icon/staff.png" alt="Staff icon">&nbsp;&nbsp;&nbsp;Staff</li>
         </ul>
     </nav>
 
