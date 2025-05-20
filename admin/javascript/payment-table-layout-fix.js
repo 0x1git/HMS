@@ -1,9 +1,9 @@
-// Ensure search bar and table are properly displayed
+// Ensure search bar and payment table are properly displayed
 document.addEventListener('DOMContentLoaded', function() {
     // Function to handle table appearance
     function adjustTableLayout() {
         const searchBar = document.querySelector('.searchsection');
-        const tableContainer = document.querySelector('.roombooktable');
+        const tableContainer = document.querySelector('.payment-table');
         
         if (searchBar && tableContainer) {
             // Add a small delay to ensure all styles are applied
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustTableLayout);
     
     // Add horizontal scroll hint if table is wider than container
-    const tableContainer = document.querySelector('.roombooktable');
+    const tableContainer = document.querySelector('.payment-table');
     const table = document.querySelector('.table');
     
     if (tableContainer && table) {

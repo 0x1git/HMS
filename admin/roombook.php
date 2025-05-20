@@ -15,9 +15,11 @@ include '../config.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- fontowesome -->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- sweet alert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="./css/luxury-roombook.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    <link rel="stylesheet" href="./css/luxury-roombook.css">
     <link rel="stylesheet" href="./css/table-fixes.css">
+    <link rel="stylesheet" href="./css/luxury-roombook-table.css">
+    <link rel="stylesheet" href="./css/luxury-roombook-table-enhancements.css">
+    <link rel="stylesheet" href="./css/luxury-visual-enhancements.css">
     <title>Golden Palace - Room Bookings</title>
 </head>
 
@@ -285,10 +287,10 @@ include '../config.php';
             <form action="./exportdata.php" method="post" style="display: inline;">
                 <button class="exportexcel" id="exportexcel" name="exportexcel" type="submit"><i class="fa-solid fa-file-arrow-down"></i></button>
             </form>
-        </div>
-    </div>
+        </div>    </div>
 
-    <div class="roombooktable table-responsive-xl">        <?php
+    <div class="roombooktable table-responsive-xl">
+        <?php
             $roombooktablesql = "SELECT * FROM roombook";
             $roombookresult = mysqli_query($conn, $roombooktablesql);
             $nums = mysqli_num_rows($roombookresult);
@@ -346,15 +348,14 @@ include '../config.php';
                     </td>
                 </tr>
             <?php
-            }
-            ?>
+            }            ?>
             </tbody>
         </table>
     </div>
 </body>
 <script src="./javascript/roombook.js"></script>
 <script src="./javascript/table-layout-fix.js"></script>
-
-
+<script src="./javascript/booking-counter.js"></script>
+<script src="./javascript/status-styling.js"></script>
 
 </html>
