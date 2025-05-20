@@ -2,42 +2,23 @@
  * Calendar configuration options
  */
 const calendarConfig = {
-    initialView: 'listWeek', // Set list view as default
+    // Initial view and toolbar settings
+    initialView: 'listWeek',
     headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'listWeek,listMonth,dayGridMonth'
     },
-    views: {
-        listWeek: {
-            titleFormat: { year: 'numeric', month: 'short', day: 'numeric' },
-            duration: { weeks: 1 },
-            buttonText: 'Week List',
-            dayHeaderFormat: {
-                weekday: 'long',
-                month: 'long',
-                day: 'numeric'
-            },
-            listDayFormat: { weekday: 'long', month: 'short', day: 'numeric' },
-            listDaySideFormat: false // Cleaner list view
-        },
-        listMonth: {
-            titleFormat: { year: 'numeric', month: 'long' },
-            duration: { months: 1 },
-            buttonText: 'Month List',
-            dayHeaderFormat: {
-                weekday: 'short',
-                month: 'long',
-                day: 'numeric'
-            },
-            listDayFormat: { weekday: 'short', month: 'short', day: 'numeric' },
-            listDaySideFormat: false
-        },
-        dayGridMonth: {
-            buttonText: 'Month Grid'
-        }
-    },
-    // Event appearance
+    
+    // Calendar behavior
+    nowIndicator: true,
+    navLinks: true,
+    businessHours: true,
+    editable: false,
+    dayMaxEvents: true,
+    displayEventTime: false,
+
+    // Event appearance and interaction
     eventDidMount: function(info) {
         // Add status styling
         const status = info.event.extendedProps.status;
@@ -45,17 +26,22 @@ const calendarConfig = {
         const roomType = info.event.extendedProps.roomType || 'Room';
         const roomno = info.event.extendedProps.roomno || '';
         
+        // Add appropriate status class
         if (status === 'Confirm') {
             info.el.classList.add('confirmed');
         } else {
             info.el.classList.add('pending');
         }
         
+        // Make it look clickable
+        info.el.style.cursor = 'pointer';
+        
         // Enhanced tooltip with more details
         const tooltipContent = `
             <strong>${guest}</strong><br>
             ${roomType} ${roomno}<br>
-            <span class="status-badge ${status.toLowerCase()}">${status}</span>
+            <span class="status-badge ${status.toLowerCase()}">${status}</span><br>
+            <em>Click to edit booking</em>
         `;
         
         new bootstrap.Tooltip(info.el, {
@@ -67,7 +53,7 @@ const calendarConfig = {
         });
     },
     
-    // Event display
+    // Event content customization
     eventContent: function(arg) {
         const guest = arg.event.extendedProps.guest || 'Guest';
         const roomType = arg.event.extendedProps.roomType || 'Room';
@@ -97,11 +83,12 @@ const calendarConfig = {
         };
     },
     
-    // Calendar behavior
-    nowIndicator: true,
-    navLinks: true,
-    businessHours: true,
-    editable: false,
-    dayMaxEvents: true,
-    displayEventTime: false
+    // Add event click handler
+    eventClick: function(info) {
+        // Get the booking ID from the event
+        const bookingId = info.event.id;
+        
+        // Redirect to the room booking edit page with the ID
+        window.location.href = `roombookedit.php?id=${bookingId}`;
+    }
 };

@@ -179,6 +179,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    cursor: pointer;
 }
 
 .fc-event:hover {
@@ -222,6 +223,25 @@
 .room-type {
     color: inherit;
     opacity: 0.9;
+}
+
+/* Status badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-badge.confirmed {
+    background: rgba(33, 150, 243, 0.2);
+    color: #2196F3;
+}
+
+.status-badge.pending {
+    background: rgba(201, 165, 92, 0.2);
+    color: var(--accent-color);
 }
 
 /* Tooltips */
