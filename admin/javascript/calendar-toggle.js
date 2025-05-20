@@ -1,17 +1,21 @@
 // This script handles toggling between table view and calendar view
-console.log('Calendar toggle script loaded');
+console.log('Calendar toggle script loading...');
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get elements
-    const calendarViewBtn = document.getElementById('calendar-view-btn');
-    const tableViewBtn = document.getElementById('table-view-btn');
-    const tableContainer = document.querySelector('.roombooktable');
-    const calendarContainer = document.getElementById('calendar-container');
-    const searchSection = document.querySelector('.searchsection');
+    console.log('DOM loaded, initializing calendar toggle...');
     
-    // Debug log
-    console.log('Calendar view button:', calendarViewBtn);
-    console.log('Table container:', tableContainer);
+    // Get required elements
+    const calendarViewBtn = document.getElementById('calendar-view-btn');
+    const tableContainer = document.querySelector('.roombooktable');
+    const searchSection = document.querySelector('.searchsection');
+    let calendarContainer = document.getElementById('calendar-container');
+
+    console.log('Elements found:', {
+        calendarViewBtn: !!calendarViewBtn,
+        tableContainer: !!tableContainer,
+        searchSection: !!searchSection,
+        calendarContainer: !!calendarContainer
+    });
     
     if (calendarViewBtn && tableContainer) {
         // Initialize FullCalendar if not already loaded

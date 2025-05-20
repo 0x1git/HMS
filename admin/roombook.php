@@ -20,7 +20,7 @@ include '../config.php';
     <link rel="stylesheet" href="./css/luxury-roombook-table.css">
     <link rel="stylesheet" href="./css/luxury-roombook-table-enhancements.css">
     <link rel="stylesheet" href="./css/luxury-visual-enhancements.css">
-    <link rel="stylesheet" href="./css/inline-calendar.css">
+    <link rel="stylesheet" href="./css/calendar-luxury.css">
     <!-- FullCalendar -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
@@ -357,14 +357,17 @@ include '../config.php';
         </table>
     </div>
 </body>
+<!-- Calendar requirements -->
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+
 <!-- Core scripts -->
 <script src="./javascript/roombook.js"></script>
 <script src="./javascript/table-layout-fix.js"></script>
 <script src="./javascript/booking-counter.js"></script>
 <script src="./javascript/status-styling.js"></script>
-<!-- Calendar requirements -->
-<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+
 <!-- Calendar implementation -->
 <script src="./javascript/calendar-config.js"></script>
 <script src="./javascript/calendar-toggle-new.js"></script>
