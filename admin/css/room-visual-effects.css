@@ -1,0 +1,170 @@
+/* Luxury Visual Effects for Room Section */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Background effect for the room section */
+body {
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(42, 51, 82, 0.7), rgba(13, 26, 66, 0.95));
+    z-index: -1;
+}
+
+/* Add gold accent to the background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 30%;
+    right: -150px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 165, 92, 0.1), rgba(201, 165, 92, 0) 70%);
+    z-index: -1;
+    animation: pulse-gold 10s infinite alternate;
+}
+
+/* Counter animations */
+.room-counter {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.room-counter.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Glassmorphism effect enhancement */
+.addroomsection, .roombox, .room-counter {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* Decorative elements for room boxes */
+.roombox::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.roombox::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+/* Room Box hover effect enhancement */
+.roombox:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* Additional animations */
+@keyframes pulse-gold {
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.3);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+}
+
+/* Enhanced delete button */
+.btn-danger {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-danger::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s;
+}
+
+.btn-danger:hover::before {
+    left: 100%;
+}
+
+/* Add subtle animation to form controls */
+.form-control {
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    transform: translateY(-2px);
+}
+
+/* Make the room section look more premium with subtle shadows */
+.room {
+    position: relative;
+}
+
+.room::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba(201, 165, 92, 0.05), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body::after {
+        right: -200px;
+        width: 250px;
+        height: 250px;
+    }
+}
