@@ -440,7 +440,7 @@
 		<h1>Invoice</h1>
 		<address>
 			<p>HOTEL GOLDEN PALACE,</p>
-			<p>(+91) 9313346569</p>
+			<p>(+91) 9898767654</p>
 		</address>
 		<span><img alt="" src="../image/logo.jpg"></span>
 	</header>
@@ -513,7 +513,7 @@
 	<aside>
 		<h1><span>Contact us</span></h1>
 		<div>
-			<p align="center">Email :- pankhaniyatushar9@gmail.com || Web :- www.bluebird.com || Phone :- +91 9313346569 </p>
+			<p align="center">Email :- hotelgoldenpalace@gmail.com || Web :- www.goldenpalace.com || Phone :- +91 9898767654 </p>
 		</div>
 	</aside>
 

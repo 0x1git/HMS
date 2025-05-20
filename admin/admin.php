@@ -38,7 +38,7 @@ if($usermail == true){
   
     <!-- nav bar -->
     <nav class="uppernav">        <div class="logo">
-            <img class="bluebirdlogo" src="../image/goldenpalacelogo.png" alt="logo">
+            <img class="bluebirdlogo" src="../image/goldenpalacelogo-glow.png" alt="logo">
             <p>GOLDEN PALACE</p>
         </div>
         <div class="logout">
