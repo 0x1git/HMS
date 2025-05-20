@@ -46,6 +46,32 @@
     overflow: hidden;
 }
 
+/* Dropdown arrow enhancement */
+.addroomsection select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23c9a55c' height='24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+/* Add a subtle glow effect on hover to make dropdown more visible */
+.addroomsection select.form-control.dropdown-hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(201, 165, 92, 0.3);
+}
+
+/* Style the dropdown menu to make it stand out */
+.addroomsection select.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.95);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.3);
+}
+
 .addroomsection::before {
     content: '';
     position: absolute;
@@ -92,6 +118,29 @@
     color: var(--light-text);
     font-size: 14px;
     transition: var(--transition-normal);
+}
+
+/* Fix for dropdown text color */
+.addroomsection select.form-control option {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 10px;
+}
+
+/* Highlight selected option */
+.addroomsection select.form-control.has-value {
+    color: var(--accent-color);
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Style for hover state on options */
+.addroomsection select.form-control option:hover,
+.addroomsection select.form-control option:focus,
+.addroomsection select.form-control option:active {
+    background-color: var(--accent-color) !important;
+    color: var(--dark-text) !important;
 }
 
 .addroomsection .form-control:focus {

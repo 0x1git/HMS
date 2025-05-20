@@ -26,10 +26,9 @@ include '../config.php';
 <body>
     <div class="addroomsection">
         <h3><i class="fas fa-plus-circle me-2"></i> Add New Room</h3>
-        <form action="" method="POST">
-            <label for="troom">Type of Room :</label>
+        <form action="" method="POST">            <label for="troom">Type of Room :</label>
             <select name="troom" class="form-control">
-                <option value selected></option>
+                <option value selected>Select Room Type</option>
                 <option value="Superior Room">SUPERIOR ROOM</option>
                 <option value="Deluxe Room">DELUXE ROOM</option>
                 <option value="Guest House">GUEST HOUSE</option>
@@ -38,12 +37,12 @@ include '../config.php';
 
             <label for="bed">Type of Bed :</label>
             <select name="bed" class="form-control">
-                <option value selected></option>
+                <option value selected>Select Bed Type</option>
                 <option value="Single">Single</option>
                 <option value="Double">Double</option>
                 <option value="Triple">Triple</option>
                 <option value="Quad">Quad</option>
-                <option value="Triple">None</option>
+                <option value="None">None</option>
             </select>
 
             <button type="submit" class="btn btn-success" name="addroom">Add Room</button>
@@ -147,10 +146,9 @@ include '../config.php';
                     </div>";
             }
         }
-        ?></div>
-
-    <!-- Custom Scripts -->
+        ?></div>    <!-- Custom Scripts -->
     <script src="js/room-enhancements.js"></script>
+    <script src="js/dropdown-fix.js"></script>
 </body>
 
 </html>
