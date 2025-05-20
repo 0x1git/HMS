@@ -36,12 +36,21 @@ const calendarConfig = {
         // Make it look clickable
         info.el.style.cursor = 'pointer';
         
-        // Enhanced tooltip with more details
+        // Enhanced tooltip with more details and confirm button for pending bookings
         const tooltipContent = `
             <strong>${guest}</strong><br>
             ${roomType} ${roomno}<br>
             <span class="status-badge ${status.toLowerCase()}">${status}</span><br>
-            <em>Click to edit booking</em>
+            <div class="tooltip-actions mt-2">
+                ${status !== 'Confirm' ? 
+                    `<button onclick="handleConfirmBooking('${info.event.id}', event)" class="btn btn-success btn-sm me-2">
+                        <i class="fas fa-check"></i> Confirm
+                    </button>` : ''
+                }
+                <button onclick="handleEditBooking('${info.event.id}', event)" class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+            </div>
         `;
         
         new bootstrap.Tooltip(info.el, {
@@ -67,6 +76,14 @@ const calendarConfig = {
                         <div class="event-details">
                             <span class="room-type">${roomType}</span>
                             <span class="status-badge ${status.toLowerCase()}">${status}</span>
+                            ${status !== 'Confirm' ? `
+                                <button onclick="handleConfirmBooking('${arg.event.id}', event)" class="btn btn-success btn-xs ms-2">
+                                    <i class="fas fa-check"></i> Confirm
+                                </button>
+                            ` : ''}
+                            <button onclick="handleEditBooking('${arg.event.id}', event)" class="btn btn-primary btn-xs ms-2">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
                         </div>
                     </div>
                 `
@@ -77,7 +94,19 @@ const calendarConfig = {
             html: `
                 <div class="fc-event-main-content">
                     <div class="event-title">${guest}</div>
-                    <div class="event-room">${roomType}</div>
+                    <div class="event-room">
+                        ${roomType}
+                        <div class="event-actions mt-1">
+                            ${status !== 'Confirm' ? `
+                                <button onclick="handleConfirmBooking('${arg.event.id}', event)" class="btn btn-success btn-xs me-1">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            ` : ''}
+                            <button onclick="handleEditBooking('${arg.event.id}', event)" class="btn btn-primary btn-xs">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             `
         };
@@ -85,10 +114,7 @@ const calendarConfig = {
     
     // Add event click handler
     eventClick: function(info) {
-        // Get the booking ID from the event
-        const bookingId = info.event.id;
-        
-        // Redirect to the room booking edit page with the ID
-        window.location.href = `roombookedit.php?id=${bookingId}`;
+        // Prevent default click behavior since we're using buttons
+        info.jsEvent.preventDefault();
     }
 };

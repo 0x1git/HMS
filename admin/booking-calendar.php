@@ -22,6 +22,9 @@ include '../config.php';
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/luxury-theme.css">
     <link rel="stylesheet" href="css/booking-calendar.css">
+    <!-- Calendar scripts -->
+    <script src="javascript/calendar-actions.js"></script>
+    <script src="javascript/calendar-config.js"></script>
 </head>
 
 <body>

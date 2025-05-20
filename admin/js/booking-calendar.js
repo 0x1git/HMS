@@ -1,5 +1,39 @@
 // Booking Calendar JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+    // Global handlers for booking actions
+    window.handleConfirmBooking = function(bookingId, event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        window.location.href = `roomconfirm.php?id=${bookingId}`;
+    };
+
+    window.handleEditBooking = function(bookingId, event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        window.location.href = `roombookedit.php?id=${bookingId}`;
+    };
+
+    // Add event delegation for all booking buttons
+    document.addEventListener('click', function(event) {
+        // Handle confirm booking buttons
+        if (event.target.closest('.confirm-booking-btn')) {
+            const button = event.target.closest('.confirm-booking-btn');
+            const bookingId = button.getAttribute('data-booking-id');
+            handleConfirmBooking(bookingId, event);
+        }
+        
+        // Handle edit booking buttons
+        if (event.target.closest('.edit-booking-btn')) {
+            const button = event.target.closest('.edit-booking-btn');
+            const bookingId = button.getAttribute('data-booking-id');
+            handleEditBooking(bookingId, event);
+        }
+    });
+
     // Initialize FullCalendar
     const calendarEl = document.getElementById('calendar');
     
@@ -13,22 +47,79 @@ document.addEventListener('DOMContentLoaded', function() {
         themeSystem: 'bootstrap5',
         events: bookingsData,
         eventClick: function(info) {
-            showBookingDetails(info.event);
+            // Prevent default behavior only if the click is not on a button
+            if (!info.jsEvent.target.closest('button')) {
+                info.jsEvent.preventDefault();
+                showBookingDetails(info.event);
+            }
         },
         eventTimeFormat: {
             hour: '2-digit',
             minute: '2-digit',
             meridiem: 'short'
         },
+        eventContent: function(arg) {
+            const event = arg.event;
+            const bookingId = event.id;
+            
+            return {
+                html: `
+                    <div class="fc-event-main-content">
+                        <div class="fc-event-title">${event.title}</div>
+                        <div class="fc-event-buttons">
+                            <button type="button" class="btn btn-success btn-sm confirm-booking-btn" 
+                                data-booking-id="${bookingId}">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm edit-booking-btn"
+                                data-booking-id="${bookingId}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+                `
+            };
+        },
         eventDidMount: function(info) {
-            // Add tooltip with basic information
+            const event = info.event;
+            const bookingId = event.id;
+            
+            // Get event status for styling
+            const status = event.extendedProps.status === 'Confirm' ? 'confirmed' : 'pending';
+            const statusLabel = event.extendedProps.status === 'Confirm' ? 'Confirmed' : 'Pending';
+            
+            // Initialize tooltip
             const tooltip = new bootstrap.Tooltip(info.el, {
-                title: `${info.event.extendedProps.name} - ${info.event.extendedProps.roomType}`,
+                title: `
+                    <div class="tooltip-content">
+                        <h6>${event.title}</h6>
+                        <div class="tooltip-details">
+                            <p>${event.extendedProps.description || ''}</p>
+                            <span class="status-badge ${status}">${statusLabel}</span>
+                        </div>
+                        <div class="tooltip-buttons">
+                            <button type="button" class="btn btn-success btn-sm confirm-booking-btn" 
+                                data-booking-id="${bookingId}">
+                                <i class="fas fa-check"></i> Confirm
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm edit-booking-btn"
+                                data-booking-id="${bookingId}">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </div>
+                    </div>
+                `,
+                html: true,
                 placement: 'top',
                 trigger: 'hover',
-                container: 'body'
+                container: 'body',
+                animation: true
             });
+
+            // Clean up tooltip on event unmount
+            info.el._tooltip = tooltip;
         },
+
         dayMaxEvents: true // allow "more" link when too many events
     });
     
