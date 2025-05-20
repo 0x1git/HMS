@@ -418,88 +418,41 @@ function addModalStyles() {
     document.head.appendChild(style);
 }
 
-// Add form validation for required fields
-function addFormValidation() {
-    const addRoomForm = document.querySelector('.addroomsection form');
+// Function to improve spacing of room counter sections
+function enhanceRoomCounterSpacing() {
+    const roomCounter = document.querySelector('.room-counter');
     
-    if (addRoomForm) {
-        addRoomForm.addEventListener('submit', function(e) {
-            const roomType = this.querySelector('select[name="troom"]');
-            const bedType = this.querySelector('select[name="bed"]');
-            const location = this.querySelector('input[name="place"]');
-            let isValid = true;
-            let errorMessage = '';
+    if (roomCounter) {
+        // Add extra classes for better styling
+        roomCounter.classList.add('enhanced-spacing');
+        
+        // Ensure proper spacing between sections
+        const occupancyInfo = roomCounter.querySelector('.occupancy-info');
+        const locationsInfo = roomCounter.querySelector('.locations-info');
+        
+        if (occupancyInfo && locationsInfo) {
+            // Ensure proper spacing with visual separator
+            const separator = document.createElement('div');
+            separator.className = 'section-separator';
+            roomCounter.insertBefore(separator, locationsInfo);
             
-            // Remove any existing error messages
-            const existingError = document.querySelector('.form-error');
-            if (existingError) {
-                existingError.remove();
-            }
-            
-            // Validate room type
-            if (roomType.selectedIndex <= 0) {
-                isValid = false;
-                errorMessage += 'Please select a room type. ';
-                roomType.classList.add('error-field');
-            } else {
-                roomType.classList.remove('error-field');
-            }
-            
-            // Validate bed type
-            if (bedType.selectedIndex <= 0) {
-                isValid = false;
-                errorMessage += 'Please select a bed type. ';
-                bedType.classList.add('error-field');
-            } else {
-                bedType.classList.remove('error-field');
-            }
-            
-            // Validate location
-            if (!location.value.trim()) {
-                isValid = false;
-                errorMessage += 'Please enter a room location. ';
-                location.classList.add('error-field');
-            } else {
-                location.classList.remove('error-field');
-            }
-            
-            // If validation fails, prevent form submission and show error
-            if (!isValid) {
-                e.preventDefault();
+            // Add fade-in animation with staggered timing
+            setTimeout(() => {
+                occupancyInfo.classList.add('animated');
                 
-                // Create and show error message
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'form-error';
-                errorDiv.textContent = errorMessage;
-                
-                addRoomForm.insertBefore(errorDiv, addRoomForm.querySelector('button'));
-                
-                // Auto-scroll to error
-                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        });
+                // Animate locations info with delay
+                setTimeout(() => {
+                    locationsInfo.classList.add('animated');
+                    separator.classList.add('animated');
+                }, 200);
+            }, 800);
+        }
     }
 }
 
-// Add error field highlight style
-function addErrorFieldHighlight() {
-    // Add CSS rules for error fields
-    const style = document.createElement('style');
-    style.textContent = `
-        .error-field {
-            border: 1px solid var(--error-color) !important;
-            box-shadow: 0 0 0 2px rgba(193, 73, 73, 0.2) !important;
-        }
-        
-        .form-error {
-            background-color: rgba(193, 73, 73, 0.1);
-            border-left: 3px solid var(--error-color);
-            color: #f8d7da;
-            padding: 10px 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-    `;
-    document.head.appendChild(style);
-}
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing code...
+    
+    // Enhance room counter spacing
+    setTimeout(enhanceRoomCounterSpacing, 300);
+});

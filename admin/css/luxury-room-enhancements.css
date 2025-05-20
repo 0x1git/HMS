@@ -358,25 +358,112 @@
 /* Room counter styling */
 .room-counter {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Changed to column layout for better organization */
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 20px;
+    border-radius: 12px; /* Increased border radius for more elegant look */
+    padding: 20px; /* Increased padding */
+    margin: 30px 0; /* Better vertical margins */
     border: 1px solid rgba(201, 165, 92, 0.2);
+    box-shadow: var(--card-shadow);
+    overflow: hidden; /* For the accent border */
+    position: relative;
 }
 
-.room-counter .title {
+/* Add gold accent border at the top */
+.room-counter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light), var(--accent-color));
+}
+
+/* Counter title styling */
+.counter-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(201, 165, 92, 0.2);
+}
+
+.counter-title i {
     color: var(--accent-color);
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 24px;
 }
 
-.room-counter .value {
+.counter-title h2 {
     color: var(--light-text);
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+}
+
+.counter-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px; /* Added spacing between sections */
+}
+
+/* Stat box styling */
+.stat-box {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 12px 15px;
+    min-width: 100px;
+    text-align: center;
+    position: relative;
+    transition: var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: calc(20% - 15px);
+    min-width: 110px;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.stat-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 0 0 8px 8px;
+}
+
+.stat-box.superior::after { background: linear-gradient(90deg, var(--superior-color), #d4bb4e); }
+.stat-box.deluxe::after { background: linear-gradient(90deg, #4668a0, var(--deluxe-color)); }
+.stat-box.guest::after { background: linear-gradient(90deg, #5d7a55, var(--guest-color)); }
+.stat-box.single::after { background: linear-gradient(90deg, #8c6449, var(--single-color)); }
+.stat-box.total::after { background: linear-gradient(90deg, var(--accent-color), var(--accent-light)); }
+
+.stat-count {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--light-text);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Occupancy info styling */
@@ -441,14 +528,96 @@
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     padding: 15px;
-    margin-top: 20px;
+    margin-top: 30px; /* Increased from 20px to 30px for better spacing */
     border: 1px solid rgba(201, 165, 92, 0.2);
+    position: relative; /* Added for decorative separator */
+}
+
+/* Add decorative separator above locations info */
+.locations-info::before {
+    content: '';
+    position: absolute;
+    top: -15px; /* Position halfway in the margin space */
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201, 165, 92, 0), rgba(201, 165, 92, 0.5), rgba(201, 165, 92, 0));
 }
 
 .locations-title {
     color: var(--accent-color);
     font-size: 16px;
     font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.locations-title::before {
+    content: '\f3c5'; /* Map marker icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 14px;
+}
+    font-size: 14px;
+}
+
+.locations-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.location-tag {
+    background: rgba(201, 165, 92, 0.15);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--accent-light);
+    transition: var(--transition-normal);
+}
+
+.location-tag:hover {
+    background: rgba(201, 165, 92, 0.25);
+    transform: translateY(-2px);
+}
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.locations-title::before {
+    content: '\f3c5'; /* Map marker icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.locations-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.location-tag {
+    background: rgba(201, 165, 92, 0.15);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--accent-light);
+    transition: var(--transition-normal);
+}
+
+.location-tag:hover {
+    background: rgba(201, 165, 92, 0.25);
+    transform: translateY(-2px);
+}
     margin-bottom: 12px;
     display: flex;
     align-items: center;
