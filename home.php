@@ -30,14 +30,6 @@ if($usermail == true){
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="./admin/css/roombook.css">
-    <style>
-      #guestdetailpanel{
-        display: none;
-      }
-      #guestdetailpanel .middle{
-        height: 450px;
-      }
-    </style>
 </head>
 
 <body>  <nav>
@@ -202,7 +194,8 @@ if($usermail == true){
   <section id="secondsection"> 
     <img src="./image/homeanimatebg.svg">
     <div class="ourroom">
-      <h1 class="head">≼ Our room ≽</h1>
+    <h1 class="head" style="color: gold;">≼ Our Rooms≽</h1>
+
       <div class="roomselect">
         <div class="roombox">
           <div class="hotelphoto h1"></div>
@@ -292,14 +285,30 @@ if($usermail == true){
 </body>
 
 <script>
-
     var bookbox = document.getElementById("guestdetailpanel");
 
-    openbookbox = () =>{
-      bookbox.style.display = "flex";
+    function openbookbox() {
+        bookbox.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
     }
-    closebox = () =>{
-      bookbox.style.display = "none";
+
+    function closebox() {
+        bookbox.style.display = "none";
+        document.body.style.overflow = "auto"; // Restore background scrolling
     }
+
+    // Close panel when clicking outside
+    bookbox.addEventListener('click', function(e) {
+        if (e.target === bookbox) {
+            closebox();
+        }
+    });
+
+    // Close panel when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && bookbox.style.display === "flex") {
+            closebox();
+        }
+    });
 </script>
 </html>
