@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Main color palette */
+    --primary-color: #0d1a42;
+    --secondary-color: #2a3352;
+    --accent-color: #c9a55c; /* gold accent */
+    --text-color: #e9eaef;
+    --light-text: #f8f9fa;
+    --dark-text: #3a3a3a;
+    --error-color: #c14949;
+    
+    /* Shadows and effects */
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    --button-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --input-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--primary-color), #000000);
+}
+
+/* Carousel Section Styling */
+.carousel_section {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.carousel-image {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.carousel-inner::after {
+    content: "";
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(13, 26, 66, 0.6), rgba(13, 26, 66, 0.3));
+}
+
+/* Authentication Section */
+#auth_section {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow-y: auto;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logo .bluebirdlogo {
+    height: 60px;
+    margin-right: 15px;
+}
+
+.logo p {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    text-shadow: var(--text-shadow);
+}
+
+/* Auth Container - Glass Effect */
+.auth_container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Login and Signup Main Containers */
+#Log_in, #sign_up {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sign_up {
+    display: none;
+}
+
+/* Headings */
+h2 {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Role Buttons */
+.role_btn {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.role_btn .btns {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.08);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--transition-normal);
+}
+
+.role_btn .btns:hover {
+    background-color: rgba(201, 165, 92, 0.15);
+    color: var(--accent-color);
+}
+
+.role_btn .btns.active {
+    background-color: rgba(201, 165, 92, 0.2);
+    color: var(--accent-color);
+    box-shadow: var(--button-shadow);
+    border: 1px solid rgba(201, 165, 92, 0.3);
+}
+
+/* Form Sections */
+.authsection {
+    width: 100%;
+    display: none;
+    text-align: center;
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.user_login.active,
+.employee_login.active {
+    display: block;
+}
+
+/* Form Floating Inputs */
+.form-floating {
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.form-floating input {
+    width: 100%;
+    padding: 14px 15px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--light-text);
+    font-size: 15px;
+    transition: var(--transition-fast);
+    box-shadow: var(--input-shadow);
+}
+
+.form-floating input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.form-floating label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: var(--transition-fast);
+    font-size: 15px;
+}
+
+.form-floating input:focus ~ label,
+.form-floating input:not(:placeholder-shown) ~ label {
+    top: -5px;
+    left: 10px;
+    font-size: 12px;
+    padding: 0 5px;
+    background: var(--secondary-color);
+    border-radius: 4px;
+    color: var(--accent-color);
+}
+
+/* Authentication Button */
+.auth_btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(201, 165, 92, 0.8), rgba(201, 165, 92, 0.9));
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    box-shadow: var(--button-shadow);
+    margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth_btn:hover {
+    background: linear-gradient(135deg, rgba(201, 165, 92, 0.9), rgba(201, 165, 92, 1));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.auth_btn:active {
+    transform: translateY(0);
+    box-shadow: var(--button-shadow);
+}
+
+/* Footer Line */
+.footer_line {
+    margin-top: 1.5rem;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.page_move_btn {
+    color: var(--accent-color);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.page_move_btn:hover {
+    text-decoration: underline;
+}
+
+/* Signup Form */
+.user_signup {
+    width: 100%;
+    animation: slideIn 0.4s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .auth_container {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .carousel_section {
+        width: 100%;
+        height: 30vh;
+    }
+    
+    #auth_section {
+        width: 100%;
+        height: 70vh;
+    }
+    
+    .carousel-image {
+        height: 30vh;
+    }
+    
+    .carousel-inner::after {
+        height: 30vh;
+    }
+    
+    .auth_container {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth_container {
+        padding: 1.5rem;
+        width: 90%;
+    }
+    
+    .logo .bluebirdlogo {
+        height: 40px;
+    }
+    
+    .logo p {
+        font-size: 22px;
+    }
+    
+    .role_btn .btns {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .carousel_section {
+        height: 25vh;
+    }
+    
+    #auth_section {
+        height: 75vh;
+    }
+    
+    .carousel-image {
+        height: 25vh;
+    }
+    
+    .carousel-inner::after {
+        height: 25vh;
+    }
+}

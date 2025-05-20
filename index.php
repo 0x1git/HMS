@@ -7,11 +7,10 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/futuristic-login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- sweet alert -->
@@ -24,38 +23,36 @@ session_start();
     <title>Hotel Golden Palace</title>
 </head>
 
-<body>
-    <!--  carousel -->
+<body>    <!--  carousel -->
     <section id="carouselExampleControls" class="carousel slide carousel_section" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="carousel-image" src="./image/hotel1.jpg">
+                <img class="carousel-image" src="./image/hotel1.jpg" alt="Golden Palace Hotel">
             </div>
             <div class="carousel-item">
-                <img class="carousel-image" src="./image/hotel2.jpg">
+                <img class="carousel-image" src="./image/hotel2.jpg" alt="Golden Palace Hotel">
             </div>
             <div class="carousel-item">
-                <img class="carousel-image" src="./image/hotel3.jpg">
+                <img class="carousel-image" src="./image/hotel3.jpg" alt="Golden Palace Hotel">
             </div>
             <div class="carousel-item">
-                <img class="carousel-image" src="./image/hotel4.jpg">
+                <img class="carousel-image" src="./image/hotel4.jpg" alt="Golden Palace Hotel">
             </div>
         </div>
-    </section>
-
-    <!-- main section -->
-    <section id="auth_section">        <div class="logo">
-            <img class="bluebirdlogo" src="./image/goldenpalacelogo.png" alt="logo">
+    </section><!-- main section -->
+    <section id="auth_section">
+        <div class="logo" data-aos="fade-down" data-aos-duration="800">
+            <img class="bluebirdlogo" src="./image/goldenpalacelogo-glow.png" alt="logo">
             <p>GOLDEN PALACE</p>
         </div>
 
-        <div class="auth_container">
+        <div class="auth_container" data-aos="fade-up" data-aos-duration="800">
             <!--============ login =============-->
 
             <div id="Log_in">
-                <h2>Log In</h2>
+                <h2>Welcome Back</h2>
                 <div class="role_btn">
-                    <div class="btns active">User</div>
+                    <div class="btns active">Guest</div>
                     <div class="btns">Staff</div>
                 </div>
 
@@ -81,24 +78,23 @@ session_start();
                         </script>";
                     }
                 }
-                ?>
-                <form class="user_login authsection active" id="userlogin" action="" method="POST">
+                ?>                <form class="user_login authsection active" id="userlogin" action="" method="POST">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="Username" placeholder=" ">
+                        <input type="text" class="form-control" name="Username" placeholder=" " required>
                         <label for="Username">Username</label>
                     </div>
                     <div class="form-floating">
-                        <input typuser_logine="email" class="form-control" name="Email" placeholder=" ">
+                        <input type="email" class="form-control" name="Email" placeholder=" " required>
                         <label for="Email">Email</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" name="Password" placeholder=" ">
+                        <input type="password" class="form-control" name="Password" placeholder=" " required>
                         <label for="Password">Password</label>
                     </div>
-                    <button type="submit" name="user_login_submit" class="auth_btn">Log in</button>
+                    <button type="submit" name="user_login_submit" class="auth_btn">Sign In</button>
 
                     <div class="footer_line">
-                        <h6>Don't have an account? <span class="page_move_btn" onclick="signuppage()">sign up</span></h6>
+                        <h6>Don't have an account? <span class="page_move_btn" onclick="signuppage()">Sign up</span></h6>
                     </div>
                 </form>
                 
@@ -124,17 +120,16 @@ session_start();
                             </script>";
                         }
                     }
-                ?> 
-                <form class="employee_login authsection" id="employeelogin" action="" method="POST">
+                ?>                <form class="employee_login authsection" id="employeelogin" action="" method="POST">
                     <div class="form-floating">
-                        <input type="email" class="form-control" name="Emp_Email" placeholder=" ">
+                        <input type="email" class="form-control" name="Emp_Email" placeholder=" " required>
                         <label for="floatingInput">Email</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" name="Emp_Password" placeholder=" ">
+                        <input type="password" class="form-control" name="Emp_Password" placeholder=" " required>
                         <label for="floatingPassword">Password</label>
                     </div>
-                    <button type="submit" name="Emp_login_submit" class="auth_btn">Log in</button>
+                    <button type="submit" name="Emp_login_submit" class="auth_btn">Sign In</button>
                 </form>
                 
             </div>
@@ -194,40 +189,38 @@ session_start();
                     }
                     
                 }
-            ?>
-            <div id="sign_up">
-                <h2>Sign Up</h2>
+            ?>            <div id="sign_up">
+                <h2>Create an Account</h2>
 
                 <form class="user_signup" id="usersignup" action="" method="POST">
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="Username" placeholder=" ">
+                        <input type="text" class="form-control" name="Username" placeholder=" " required>
                         <label for="Username">Username</label>
                     </div>
                     <div class="form-floating">
-                        <input type="email" class="form-control" name="Email" placeholder=" ">
+                        <input type="email" class="form-control" name="Email" placeholder=" " required>
                         <label for="Email">Email</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" name="Password" placeholder=" ">
+                        <input type="password" class="form-control" name="Password" placeholder=" " required>
                         <label for="Password">Password</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" name="CPassword" placeholder=" ">
+                        <input type="password" class="form-control" name="CPassword" placeholder=" " required>
                         <label for="CPassword">Confirm Password</label>
                     </div>
 
-                    <button type="submit" name="user_signup_submit" class="auth_btn">Sign up</button>
+                    <button type="submit" name="user_signup_submit" class="auth_btn">Create Account</button>
 
                     <div class="footer_line">
-                        <h6>Already have an account? <span class="page_move_btn" onclick="loginpage()">Log in</span></h6>
+                        <h6>Already have an account? <span class="page_move_btn" onclick="loginpage()">Sign in</span></h6>
                     </div>
                 </form>
-            </div>
-    </section>
+            </div></section>
 </body>
 
 
-<script src="./javascript/index.js"></script>
+<script src="./javascript/futuristic-login.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
