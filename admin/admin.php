@@ -9,7 +9,7 @@ $usermail=$_SESSION['usermail'];
 if($usermail == true){
 
 }else{
-  header("location: http://localhost/hotelmanage_system/index.php");
+  header("location: ../index.php");
 }
 
 ?>
@@ -29,8 +29,6 @@ if($usermail == true){
 
     <title>Golden Palace - Admin</title>
 
-    <title>Golden Palace - Admin Dashboard</title>
-
 </head>
 
 <body>    <!-- mobile view -->
@@ -40,13 +38,9 @@ if($usermail == true){
   
     <!-- nav bar -->
 
-    <nav class="uppernav">        <div class="logo">
-            <img class="bluebirdlogo" src="../image/goldenpalacelogo-glow.png" alt="logo">
-
     <nav class="uppernav">
         <div class="logo">
             <img class="bluebirdlogo" src="../image/goldenpalacelogo-glow.png" alt="Golden Palace logo">
-
             <p>GOLDEN PALACE</p>
         </div>
         <div class="logout">
@@ -61,15 +55,13 @@ if($usermail == true){
             <li class="pagebtn"><img src="../image/icon/bedroom.png" alt="Rooms icon">&nbsp;&nbsp;&nbsp;Rooms</li>
             <li class="pagebtn"><img src="../image/icon/staff.png" alt="Staff icon">&nbsp;&nbsp;&nbsp;Staff</li>
         </ul>
-    </nav>
-
-    <!-- main section -->
+    </nav>    <!-- main section -->
     <div class="mainscreen">
         <iframe class="frames frame1 active" src="./dashboard.php" frameborder="0"></iframe>
         <iframe class="frames frame2" src="./roombook.php" frameborder="0"></iframe>
         <iframe class="frames frame3" src="./payment.php" frameborder="0"></iframe>
         <iframe class="frames frame4" src="./room.php" frameborder="0"></iframe>
-        <iframe class="frames frame4" src="./staff.php" frameborder="0"></iframe>
+        <iframe class="frames frame5" src="./staff.php" frameborder="0"></iframe>
     </div>
 </body>
 

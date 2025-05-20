@@ -63,11 +63,8 @@
     <!-- morish bar -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
-
-    <title>Golden Palace - Admin </title>
     <title>Golden Palace - Dashboard</title>
 
 </head>
@@ -81,10 +78,9 @@
           <div class="box guestbox">
             <h2>Staff Members</h2>  
             <h1><?php echo $staffrow ?></h1>
-          </div>
-          <div class="box profitbox">
+          </div>          <div class="box profitbox">
             <h2>Revenue</h2>  
-            <h1><?php echo $tot?> <span>&#8377</span></h1>
+            <h1><?php echo $tot?> <span>₹</span></h1>
           </div>
       </div>
       <div class="chartbox">

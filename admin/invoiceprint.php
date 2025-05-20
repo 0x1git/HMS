@@ -442,7 +442,7 @@
 			<p>HOTEL GOLDEN PALACE,</p>
 			<p>(+91) 9898767654</p>
 		</address>
-		<span><img alt="" src="../image/logo.jpg"></span>
+		<span><img alt="Golden Palace Logo" src="../image/goldenpalacelogo.png" width="150"></span>
 	</header>
 	<article>
 		<h1>Recipient</h1>

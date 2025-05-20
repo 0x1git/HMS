@@ -5,7 +5,9 @@
 # Package Manager used: dnf
 
 if [[ -z `which dnf` ]]; then
-     echo "Please install dnf package manager and then rerun this script"
+     echo "Please install dnf package manager or use a compatible system"
+     echo "For Windows users with XAMPP, please follow the manual setup instructions in SETUP_NOTES.md"
+     exit 1
 fi
 
 cd `dirname $0`
@@ -27,12 +29,13 @@ systemctl enable httpd
 
 # Configure DB
 echo "Enter your Mysql root password or just press Enter if not configured yet"
-mysql -u root -p < $DIR/bluebirdhotel.sql
+mysql -u root -p < $DIR/goldenpalacehotel.sql
 
 # Copy project to /var/www/html
-cp -r $DIR /var/www/html/
+cp -r $DIR /var/www/html/HMS
 
 # restart apache
 systemctl restart httpd
 
-echo "View project at: http://localhost:80/Hotel-Management-System/index.php"
+echo "View project at: http://localhost:80/HMS/index.php"
+echo "Read SETUP_NOTES.md for additional configuration information"

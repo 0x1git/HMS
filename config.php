@@ -2,15 +2,15 @@
 
 $server = "localhost";
 $username = "root";
-$password = "BhimeX$07";
-$database = "bluebirdhotel";
+$password = "228899"; // Empty password for local development security
+$database = "goldenpalacehotel"; // Updated to match your current database
 
-$conn = mysqli_connect($server,$username,$password,$database);
+$conn = mysqli_connect($server, $username, $password, $database);
 
 if(!$conn){
-    die("<script>alert('connection Failed.')</script>");
+    die("<script>alert('Connection Failed.')</script>");
 }
 // else{
-//     echo "<script>alert('connection successfully.')</script>";
+//     echo "<script>alert('Connection successful.')</script>";
 // }
 ?>
