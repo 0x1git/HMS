@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Main color palette */
+    --primary-color: #0d1a42;
+    --secondary-color: #2a3352;
+    --accent-color: #c9a55c; /* gold accent */
+    --text-color: #e9eaef;
+    --light-text: #f8f9fa;
+    --dark-text: #3a3a3a;
+    --error-color: #c14949;
+    --success-color: #4CAF50;
+    
+    /* Box accent colors */
+    --booking-color: #c9a55c;
+    --staff-color: #8ba3c9;
+    --profit-color: #6ca882;
+    
+    /* Shadows and effects */
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    --button-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --input-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+*::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--primary-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+body {
+    background: linear-gradient(135deg, rgba(13, 26, 66, 0.97), rgba(42, 51, 82, 0.97));
+    color: var(--text-color);
+    min-height: 100vh;
+    font-size: 14px;
+}
+
+/* Room Form */
+.room_form {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.room_form h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: var(--text-shadow);
+}
+
+/* Room Grid */
+.room_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.room_card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-normal);
+}
+
+.room_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.room_image {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.room_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.room_card:hover .room_image img {
+    transform: scale(1.05);
+}
+
+.room_type {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(13, 26, 66, 0.8), transparent);
+    padding: 15px;
+    text-align: center;
+    color: var(--accent-color);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.room_details {
+    padding: 15px;
+}
+
+.room_details p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.room_details p span:first-child {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.room_details p span:last-child {
+    font-weight: 500;
+}
+
+.room_price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 15px 0;
+    text-align: center;
+}
+
+.room_actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.room_actions .btn {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: var(--transition-fast);
+    text-align: center;
+}
+
+.btn-edit {
+    background-color: rgba(33, 150, 243, 0.2);
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.btn-delete {
+    background-color: rgba(193, 73, 73, 0.2);
+    color: #F44336;
+    border: 1px solid rgba(193, 73, 73, 0.3);
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-edit:hover {
+    background-color: rgba(33, 150, 243, 0.3);
+}
+
+.btn-delete:hover {
+    background-color: rgba(193, 73, 73, 0.3);
+}
+
+/* Add Room Section */
+.add_room_form {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.add_room_form h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.form_group {
+    margin-bottom: 15px;
+}
+
+.form_group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--light-text);
+}
+
+.form_group input, .form_group select, .form_group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--light-text);
+    transition: var(--transition-fast);
+    box-shadow: var(--input-shadow);
+}
+
+.form_group input:focus, .form_group select:focus, .form_group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form_row {
+    display: flex;
+    gap: 15px;
+}
+
+.form_row .form_group {
+    flex: 1;
+}
+
+.submit_btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(201, 165, 92, 0.8), rgba(201, 165, 92, 0.9));
+    color: var(--dark-text);
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    margin-top: 10px;
+    box-shadow: var(--button-shadow);
+}
+
+.submit_btn:hover {
+    background: linear-gradient(135deg, rgba(201, 165, 92, 0.9), rgba(201, 165, 92, 1));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .room_form {
+        padding: 15px;
+    }
+    
+    .form_row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

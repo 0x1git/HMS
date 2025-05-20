@@ -7,19 +7,18 @@ include '../config.php';
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- boot -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- fontowesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- fontowesome -->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="./css/roombook.css">
-    <title>Golden Palace - Admin</title>
+    <link rel="stylesheet" href="./css/luxury-roombook.css">
+    <link rel="stylesheet" href="./css/table-fixes.css">
+    <title>Golden Palace - Room Bookings</title>
 </head>
 
 <body>
@@ -275,21 +274,21 @@ include '../config.php';
                     // }
                 }
             }
-        ?>
-    </div>
+        ?>    </div>
 
     
     <!-- ================================================= -->
     <div class="searchsection">
         <input type="text" name="search_bar" id="search_bar" placeholder="search..." onkeyup="searchFun()">
-        <button class="adduser" id="adduser" onclick="adduseropen()"><i class="fa-solid fa-bookmark"></i> Add</button>
-        <form action="./exportdata.php" method="post">
-            <button class="exportexcel" id="exportexcel" name="exportexcel" type="submit"><i class="fa-solid fa-file-arrow-down"></i></button>
-        </form>
+        <div class="button-group">
+            <button class="adduser" id="adduser" onclick="adduseropen()"><i class="fa-solid fa-bookmark"></i> Add</button>
+            <form action="./exportdata.php" method="post" style="display: inline;">
+                <button class="exportexcel" id="exportexcel" name="exportexcel" type="submit"><i class="fa-solid fa-file-arrow-down"></i></button>
+            </form>
+        </div>
     </div>
 
-    <div class="roombooktable" class="table-responsive-xl">
-        <?php
+    <div class="roombooktable table-responsive-xl">        <?php
             $roombooktablesql = "SELECT * FROM roombook";
             $roombookresult = mysqli_query($conn, $roombooktablesql);
             $nums = mysqli_num_rows($roombookresult);
@@ -310,8 +309,7 @@ include '../config.php';
                     <th scope="col">Check-Out</th>
                     <th scope="col">No of Day</th>
                     <th scope="col">Status</th>
-                    <th scope="col" class="action">Action</th>
-                    <!-- <th>Delete</th> -->
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
 
@@ -328,8 +326,7 @@ include '../config.php';
                     <td><?php echo $res['RoomType'] ?></td>
                     <td><?php echo $res['Bed'] ?></td>
                     <td><?php echo $res['NoofRoom'] ?></td>
-                    <td><?php echo $res['Meal'] ?></td>
-                    <td><?php echo $res['cin'] ?></td>
+                    <td><?php echo $res['Meal'] ?></td>                    <td><?php echo $res['cin'] ?></td>
                     <td><?php echo $res['cout'] ?></td>
                     <td><?php echo $res['nodays'] ?></td>
                     <td><?php echo $res['stat'] ?></td>
@@ -356,6 +353,7 @@ include '../config.php';
     </div>
 </body>
 <script src="./javascript/roombook.js"></script>
+<script src="./javascript/table-layout-fix.js"></script>
 
 
 
