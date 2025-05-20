@@ -19,8 +19,7 @@ include '../config.php';
     <link rel="stylesheet" href="./css/table-fixes.css">
     <link rel="stylesheet" href="./css/luxury-roombook-table.css">
     <link rel="stylesheet" href="./css/luxury-roombook-table-enhancements.css">
-    <link rel="stylesheet" href="./css/luxury-visual-enhancements.css">
-    <title>Golden Palace - Room Bookings</title>
+    <link rel="stylesheet" href="./css/luxury-visual-enhancements.css">    <title>Golden Palace - Room Bookings</title>
 </head>
 
 <body>
@@ -278,16 +277,16 @@ include '../config.php';
             }
         ?>    </div>
 
-    
-    <!-- ================================================= -->
-    <div class="searchsection">
+      <!-- ================================================= -->    <div class="searchsection">
         <input type="text" name="search_bar" id="search_bar" placeholder="search..." onkeyup="searchFun()">
         <div class="button-group">
+            <a href="booking-calendar.php" class="btn btn-outline-light btn-sm me-2" target="_parent"><i class="fas fa-calendar-alt me-1"></i>Calendar View</a>
             <button class="adduser" id="adduser" onclick="adduseropen()"><i class="fa-solid fa-bookmark"></i> Add</button>
             <form action="./exportdata.php" method="post" style="display: inline;">
                 <button class="exportexcel" id="exportexcel" name="exportexcel" type="submit"><i class="fa-solid fa-file-arrow-down"></i></button>
             </form>
-        </div>    </div>
+        </div>
+    </div>
 
     <div class="roombooktable table-responsive-xl">
         <?php
