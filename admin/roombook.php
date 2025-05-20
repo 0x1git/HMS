@@ -19,7 +19,12 @@ include '../config.php';
     <link rel="stylesheet" href="./css/table-fixes.css">
     <link rel="stylesheet" href="./css/luxury-roombook-table.css">
     <link rel="stylesheet" href="./css/luxury-roombook-table-enhancements.css">
-    <link rel="stylesheet" href="./css/luxury-visual-enhancements.css">    <title>Golden Palace - Room Bookings</title>
+    <link rel="stylesheet" href="./css/luxury-visual-enhancements.css">
+    <link rel="stylesheet" href="./css/inline-calendar.css">
+    <!-- FullCalendar -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <title>Golden Palace - Room Bookings</title>
 </head>
 
 <body>
@@ -280,7 +285,7 @@ include '../config.php';
       <!-- ================================================= -->    <div class="searchsection">
         <input type="text" name="search_bar" id="search_bar" placeholder="search..." onkeyup="searchFun()">
         <div class="button-group">
-            <a href="booking-calendar.php" class="btn btn-outline-light btn-sm me-2" target="_parent"><i class="fas fa-calendar-alt me-1"></i>Calendar View</a>
+            <button id="calendar-view-btn" class="btn btn-outline-light btn-sm me-2"><i class="fas fa-calendar-alt me-1"></i>Calendar View</button>
             <button class="adduser" id="adduser" onclick="adduseropen()"><i class="fa-solid fa-bookmark"></i> Add</button>
             <form action="./exportdata.php" method="post" style="display: inline;">
                 <button class="exportexcel" id="exportexcel" name="exportexcel" type="submit"><i class="fa-solid fa-file-arrow-down"></i></button>
@@ -352,9 +357,16 @@ include '../config.php';
         </table>
     </div>
 </body>
+<!-- Core scripts -->
 <script src="./javascript/roombook.js"></script>
 <script src="./javascript/table-layout-fix.js"></script>
 <script src="./javascript/booking-counter.js"></script>
 <script src="./javascript/status-styling.js"></script>
+<!-- Calendar requirements -->
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+<!-- Calendar implementation -->
+<script src="./javascript/calendar-config.js"></script>
+<script src="./javascript/calendar-toggle-new.js"></script>
 
 </html>
