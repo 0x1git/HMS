@@ -33,9 +33,7 @@ include '../config.php';
                 <option value="Deluxe Room">DELUXE ROOM</option>
                 <option value="Guest House">GUEST HOUSE</option>
                 <option value="Single Room">SINGLE ROOM</option>
-            </select>
-
-            <label for="bed">Type of Bed :</label>
+            </select>            <label for="bed">Type of Bed :</label>
             <select name="bed" class="form-control">
                 <option value selected>Select Bed Type</option>
                 <option value="Single">Single</option>
@@ -44,20 +42,43 @@ include '../config.php';
                 <option value="Quad">Quad</option>
                 <option value="None">None</option>
             </select>
+              <label for="place">Location/Place :</label>
+            <input type="text" name="place" class="form-control" placeholder="Enter room location (e.g., Main Building, West Wing)" required>
+            
+            <!-- Hidden field for customer ID (default 0 = no customer assigned) -->
+            <input type="hidden" name="cusid" value="0">
 
             <button type="submit" class="btn btn-success" name="addroom">Add Room</button>
-        </form>
-
-        <?php
+        </form>        <?php
         if (isset($_POST['addroom'])) {
-            $typeofroom = $_POST['troom'];
-            $typeofbed = $_POST['bed'];
+            // Validate required fields
+            if (empty($_POST['troom']) || empty($_POST['bed']) || empty($_POST['place'])) {
+                echo "<div class='alert alert-danger mt-3'>Error: All fields are required. Please fill in all the fields.</div>";
+            } else {
+                $typeofroom = mysqli_real_escape_string($conn, $_POST['troom']);
+                $typeofbed = mysqli_real_escape_string($conn, $_POST['bed']);
+                $place = mysqli_real_escape_string($conn, $_POST['place']);
+                // Get customer ID from the form or set default to 0 (no customer assigned)
+                $cusid = isset($_POST['cusid']) ? intval($_POST['cusid']) : 0;
 
-            $sql = "INSERT INTO room(type,bedding) VALUES ('$typeofroom', '$typeofbed')";
-            $result = mysqli_query($conn, $sql);
+                $sql = "INSERT INTO room(type, bedding, place, cusid) VALUES ('$typeofroom', '$typeofbed', '$place', $cusid)";
+                $result = mysqli_query($conn, $sql);
 
-            if ($result) {
-                header("Location: room.php");
+                if ($result) {
+                    // Success message and redirect with animation effect
+                    echo "<div class='alert alert-success mt-3'>
+                            <i class='fas fa-check-circle me-2'></i> Room added successfully!
+                          </div>";
+                    echo "<script>
+                            setTimeout(function() {
+                                window.location.href = 'room.php';
+                            }, 1500);
+                          </script>";
+                } else {
+                    echo "<div class='alert alert-danger mt-3'>
+                            <i class='fas fa-exclamation-triangle me-2'></i> Error: " . mysqli_error($conn) . "
+                          </div>";
+                }
             }
         }
         ?>
@@ -67,10 +88,11 @@ include '../config.php';
         $re = mysqli_query($conn, $sql)
         ?>
         <?php
-        while ($row = mysqli_fetch_array($re)) {
-            $id = $row['type'];
+        while ($row = mysqli_fetch_array($re)) {            $id = $row['type'];
             $roomId = $row['id'];
             $bedding = $row['bedding'];
+            $place = isset($row['place']) ? $row['place'] : "Location not specified";
+            $customerId = isset($row['cusid']) ? $row['cusid'] : 0;
             
             // Define icons based on bed type
             $bedIcon = "fa-bed";
@@ -86,9 +108,7 @@ include '../config.php';
                     break;
                 default:
                     $bedIcon = "fa-bed";
-            }
-            
-            if ($id == "Superior Room") {
+            }            if ($id == "Superior Room") {
                 echo "<div class='roombox roomboxsuperior'>
                         <div class='text-center no-boder'>
                             <div class='room-icon'>
@@ -96,48 +116,50 @@ include '../config.php';
                             </div>
                             <h3>" . $row['type'] . "</h3>
                             <div class='mb-1'>Bed Type: <span class='bed-type'>" . $row['bedding'] . "</span></div>
+                            <div class='room-location'>Location: " . $place . "</div>
+                            " . ($customerId > 0 ? "<div class='room-customer'>Customer ID: " . $customerId . "</div>" : "") . "
                             <div class='room-id'>Room ID: #" . $roomId . "</div>
                             <a href='roomdelete.php?id=". $roomId ."' class='delete-btn'>
                                 <button class='btn btn-danger'><i class='fas fa-trash-alt me-2'></i>Delete</button>
                             </a>
                         </div>
-                    </div>";
-            } else if ($id == "Deluxe Room") {
-                echo "<div class='roombox roomboxdelux'>
+                    </div>";} else if ($id == "Deluxe Room") {                echo "<div class='roombox roomboxdelux'>
                         <div class='text-center no-boder'>
                             <div class='room-icon'>
                                 <i class='fa-solid $bedIcon fa-4x mb-2'></i>
                             </div>
                             <h3>" . $row['type'] . "</h3>
                             <div class='mb-1'>Bed Type: <span class='bed-type'>" . $row['bedding'] . "</span></div>
+                            <div class='room-location'>Location: " . $place . "</div>
+                            " . ($customerId > 0 ? "<div class='room-customer'>Customer ID: " . $customerId . "</div>" : "") . "
                             <div class='room-id'>Room ID: #" . $roomId . "</div>
                             <a href='roomdelete.php?id=". $roomId ."' class='delete-btn'>
                                 <button class='btn btn-danger'><i class='fas fa-trash-alt me-2'></i>Delete</button>
                             </a>
                         </div>
-                    </div>";
-            } else if ($id == "Guest House") {
-                echo "<div class='roombox roomboguest'>
+                    </div>";} else if ($id == "Guest House") {                echo "<div class='roombox roomboguest'>
                         <div class='text-center no-boder'>
                             <div class='room-icon'>
                                 <i class='fa-solid $bedIcon fa-4x mb-2'></i>
                             </div>
                             <h3>" . $row['type'] . "</h3>
                             <div class='mb-1'>Bed Type: <span class='bed-type'>" . $row['bedding'] . "</span></div>
+                            <div class='room-location'>Location: " . $place . "</div>
+                            " . ($customerId > 0 ? "<div class='room-customer'>Customer ID: " . $customerId . "</div>" : "") . "
                             <div class='room-id'>Room ID: #" . $roomId . "</div>
                             <a href='roomdelete.php?id=". $roomId ."' class='delete-btn'>
                                 <button class='btn btn-danger'><i class='fas fa-trash-alt me-2'></i>Delete</button>
                             </a>
                         </div>
-                    </div>";
-            } else if ($id == "Single Room") {
-                echo "<div class='roombox roomboxsingle'>
+                    </div>";} else if ($id == "Single Room") {                echo "<div class='roombox roomboxsingle'>
                         <div class='text-center no-boder'>
                             <div class='room-icon'>
                                 <i class='fa-solid $bedIcon fa-4x mb-2'></i>
                             </div>
                             <h3>" . $row['type'] . "</h3>
                             <div class='mb-1'>Bed Type: <span class='bed-type'>" . $row['bedding'] . "</span></div>
+                            <div class='room-location'>Location: " . $place . "</div>
+                            " . ($customerId > 0 ? "<div class='room-customer'>Customer ID: " . $customerId . "</div>" : "") . "
                             <div class='room-id'>Room ID: #" . $roomId . "</div>
                             <a href='roomdelete.php?id=". $roomId ."' class='delete-btn'>
                                 <button class='btn btn-danger'><i class='fas fa-trash-alt me-2'></i>Delete</button>
