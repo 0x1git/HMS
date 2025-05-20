@@ -1,0 +1,40 @@
+/* Staff Dropdown Enhancements */
+.addroomsection select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23c9a55c' height='24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.addroomsection select.form-control:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(201, 165, 92, 0.3);
+}
+
+.addroomsection select.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.95);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.3);
+}
+
+.addroomsection select.form-control.has-value {
+    color: var(--light-text);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.addroomsection select.form-control option[value=""] {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+.addroomsection select.form-control option:not([value=""]) {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 10px;
+}

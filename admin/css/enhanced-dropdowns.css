@@ -1,0 +1,76 @@
+/* Enhanced Dropdown Styling for Staff Section */
+.addroomsection select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23c9a55c' height='24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding: 12px 40px 12px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(13, 26, 66, 0.8);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    font-weight: 500;
+    color: var(--light-text);
+}
+
+/* Hover state */
+.addroomsection select.form-control:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(201, 165, 92, 0.25);
+    background-color: rgba(13, 26, 66, 0.9);
+    transform: translateY(-1px);
+}
+
+/* Focus state */
+.addroomsection select.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.95);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.3), 0 0 20px rgba(201, 165, 92, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Selected state */
+.addroomsection select.form-control.has-value {
+    color: var(--accent-color);
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Placeholder option */
+.addroomsection select.form-control option[value=""] {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+/* Regular options */
+.addroomsection select.form-control option:not([value=""]) {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 12px;
+    font-weight: normal;
+}
+
+/* Option hover/focus states */
+.addroomsection select.form-control option:hover,
+.addroomsection select.form-control option:focus {
+    background-color: var(--accent-color);
+    color: var(--dark-text);
+}
+
+/* Disabled state */
+.addroomsection select.form-control:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Size adjustments for different screen sizes */
+@media (max-width: 768px) {
+    .addroomsection select.form-control {
+        padding: 10px 35px 10px 12px;
+        font-size: 14px;
+    }
+}

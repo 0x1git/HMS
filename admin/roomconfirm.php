@@ -36,18 +36,22 @@ if($stat == "NotConfirm")
         if($RoomType=="Superior Room")
         {
             $type_of_room = 3000;
+            $type_of_room_display = '₹' . number_format($type_of_room, 2);
         }
         else if($RoomType=="Deluxe Room")
         {
             $type_of_room = 2000;
+            $type_of_room_display = '₹' . number_format($type_of_room, 2);
         }
         else if($RoomType=="Guest House")
         {
             $type_of_room = 1500;
+            $type_of_room_display = '₹' . number_format($type_of_room, 2);
         }
         else if($RoomType=="Single Room")
         {
             $type_of_room = 1000;
+            $type_of_room_display = '₹' . number_format($type_of_room, 2);
         }
         
         

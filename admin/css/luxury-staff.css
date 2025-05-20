@@ -93,11 +93,156 @@ body {
     box-shadow: var(--input-shadow);
 }
 
+/* Enhanced dropdown styling */
+.addroomsection select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23c9a55c' height='24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding: 12px 35px 12px 15px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    background-color: rgba(13, 26, 66, 0.8);
+}
+
+.addroomsection select.form-control:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(201, 165, 92, 0.3);
+}
+
+.addroomsection select.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.95);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.3);
+}
+
+.addroomsection select.form-control.has-value {
+    color: var(--light-text);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.addroomsection select.form-control option[value=""] {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+.addroomsection select.form-control option:not([value=""]) {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 10px;
+}
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-normal);
+}
+
+/* Style for dropdown hover state */
+.addroomsection select.form-control:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(201, 165, 92, 0.3);
+}
+
+/* Style for dropdown focus state */
+.addroomsection select.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.95);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.3);
+}
+
+/* Style for selected option */
+.addroomsection select.form-control.has-value {
+    color: var(--light-text);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Style for placeholder option */
+.addroomsection select.form-control option[value=""] {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+/* Style for dropdown options */
+.addroomsection select.form-control option:not([value=""]) {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 10px;
+}
+
+/* Add a subtle glow effect on hover to make dropdown more visible */
+.addroomsection select.form-control.dropdown-hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(201, 165, 92, 0.3);
+}
+
+/* Style the dropdown menu to make it stand out */
+.addroomsection select.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.95);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.3);
+}
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+/* Add a subtle glow effect on hover */
+.addroomsection select.form-control.dropdown-hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(201, 165, 92, 0.3);
+}
+
+/* Fix for dropdown options */
+.addroomsection select.form-control option {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 10px;
+}
+
+/* Highlight selected option */
+.addroomsection select.form-control.has-value {
+    color: var(--accent-color);
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Style for hover state on options */
+.addroomsection select.form-control option:hover,
+.addroomsection select.form-control option:focus,
+.addroomsection select.form-control option:active {
+    background-color: var(--accent-color) !important;
+    color: var(--dark-text) !important;
+}
+
 .addroomsection input:focus,
 .addroomsection select:focus {
     outline: none;
     border-color: var(--accent-color);
     background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.2);
+}
+
+/* Enhanced placeholder text styling */
+.addroomsection input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+/* Add subtle animation on focus */
+.addroomsection input:focus,
+.addroomsection select:focus {
+    transform: translateY(-2px);
 }
 
 .addroomsection .btn-success {
@@ -183,6 +328,181 @@ body {
     background-color: rgba(193, 73, 73, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced Staff Card Styling */
+.staff-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.07));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.staff-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--staff-color), #a8c1e6, var(--staff-color));
+}
+
+.staff-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-normal);
+}
+
+.staff-card:hover .staff-icon {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(201, 165, 92, 0.2);
+}
+
+.staff-card h3 {
+    color: var(--light-text);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.staff-position {
+    color: var(--accent-color);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.staff-salary, .staff-joindate, .staff-id {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    display: inline-block;
+    padding-left: 22px;
+}
+
+.staff-salary::before {
+    content: '\f3d1'; /* Money icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.staff-joindate::before {
+    content: '\f073'; /* Calendar icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.staff-id::before {
+    content: '\f2bb'; /* ID card icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.delete-btn {
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.delete-btn .btn-danger {
+    background: linear-gradient(145deg, rgba(193, 73, 73, 0.3), rgba(193, 73, 73, 0.2));
+    border: 1px solid rgba(193, 73, 73, 0.4);
+    color: #ffcccc;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.delete-btn .btn-danger:hover {
+    background: linear-gradient(145deg, rgba(193, 73, 73, 0.5), rgba(193, 73, 73, 0.4));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(193, 73, 73, 0.2);
+}
+
+/* Add animation for staff cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.staff-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Enhanced form header */
+.addroomsection h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.addroomsection h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(201, 165, 92, 0), rgba(201, 165, 92, 1), rgba(201, 165, 92, 0));
+}
+
+/* Alert styling */
+.alert {
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.alert-danger {
+    background-color: rgba(193, 73, 73, 0.2);
+    border-left: 4px solid rgba(193, 73, 73, 0.8);
+    color: #ffcccc;
+}
+
+.alert-success {
+    background-color: rgba(76, 175, 80, 0.2);
+    border-left: 4px solid rgba(76, 175, 80, 0.8);
+    color: #c8e6c9;
 }
 
 /* Responsive styles */

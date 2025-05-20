@@ -15,20 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Total bill column is the third-to-last column
             const totalBillCell = table.rows[i].cells[table.rows[i].cells.length - 2];
             
-            if (totalBillCell) {
-                // Parse the amount as a number
-                const amount = parseFloat(totalBillCell.textContent.trim());
+            if (totalBillCell) {                // Parse the amount as a number, removing the ₹ symbol and any commas
+                const amountText = totalBillCell.textContent.trim().replace('₹', '').replace(/,/g, '');
+                const amount = parseFloat(amountText);
                 if (!isNaN(amount)) {
                     totalAmount += amount;
                 }
             }
         }
-        
-        // Format the total amount with commas
-        const formattedTotalAmount = totalAmount.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 2
+          // Format the total amount with commas
+        const formattedTotalAmount = '₹' + totalAmount.toLocaleString('en-IN', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
         });
         
         // If table container doesn't already have a title section, create one
