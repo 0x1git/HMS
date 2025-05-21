@@ -172,16 +172,16 @@ if($usermail == true){
                     
                         if ($result) {
                             echo "<script>
+                                document.getElementById('guestdetailpanel').style.display = 'none';
                                 swal({
                                     title: 'Reservation successful',
                                     icon: 'success'
                                 });
-                                window.location.href = 'home.php';
                             </script>";
                         } else {
                             echo "<script>
                                 swal({
-                                    title: 'Something went wrong',
+                                    title: 'Fill the proper details',
                                     icon: 'error'
                                 });
                             </script>";
@@ -309,10 +309,5 @@ if($usermail == true){
             closebox();
         }
     });
-
-    // Prevent form resubmission on page refresh
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
 </script>
 </html>
