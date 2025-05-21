@@ -1,0 +1,323 @@
+/* Luxury Room Enhancements - Matching hotel aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Main color palette */
+    --primary-color: #0d1a42;
+    --secondary-color: #2a3352;
+    --accent-color: #c9a55c; /* gold accent */
+    --accent-light: #e5d3a3;
+    --text-color: #e9eaef;
+    --light-text: #f8f9fa;
+    --dark-text: #3a3a3a;
+    --error-color: #c14949;
+    --success-color: #4CAF50;
+    
+    /* Room type colors */
+    --superior-color: #9d8221;
+    --deluxe-color: #5c7cb9;
+    --guest-color: #7c9a72;
+    --single-color: #a97b5e;
+    
+    /* Shadows and effects */
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    --button-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --gold-glow: 0 0 15px rgba(201, 165, 92, 0.5);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Add Room Section - Luxury Style */
+.addroomsection {
+    max-width: 800px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dropdown arrow enhancement */
+.addroomsection select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23c9a55c' height='24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+/* Add a subtle glow effect on hover to make dropdown more visible */
+.addroomsection select.form-control.dropdown-hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(201, 165, 92, 0.3);
+}
+
+/* Style the dropdown menu to make it stand out */
+.addroomsection select.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.95);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.3);
+}
+
+.addroomsection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light), var(--accent-color));
+    z-index: 1;
+}
+
+.addroomsection h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--accent-color);
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: var(--text-shadow);
+}
+
+.addroomsection form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.addroomsection label {
+    display: block;
+    color: var(--light-text);
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.addroomsection .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    border-radius: 6px;
+    color: var(--light-text);
+    font-size: 14px;
+    transition: var(--transition-normal);
+}
+
+/* Fix for dropdown text color */
+.addroomsection select.form-control option {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 10px;
+}
+
+/* Highlight selected option */
+.addroomsection select.form-control.has-value {
+    color: var(--accent-color);
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Style for hover state on options */
+.addroomsection select.form-control option:hover,
+.addroomsection select.form-control option:focus,
+.addroomsection select.form-control option:active {
+    background-color: var(--accent-color) !important;
+    color: var(--dark-text) !important;
+}
+
+.addroomsection .form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.addroomsection .btn-success {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--accent-color), #b89346);
+    color: #0d1a42;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    align-self: flex-start;
+    box-shadow: var(--button-shadow);
+}
+
+.addroomsection .btn-success:hover {
+    background: linear-gradient(135deg, #d5b26a, var(--accent-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Room Display Section */
+.room {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+/* Room Box Styles */
+.roombox {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    position: relative;
+    transition: var(--transition-normal);
+    height: 100%;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.roombox::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    z-index: 1;
+}
+
+.roombox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Room types with different accent colors */
+.roomboxsuperior::before {
+    background: linear-gradient(90deg, var(--superior-color), #d4bb4e, var(--superior-color));
+}
+
+.roomboxdelux::before {
+    background: linear-gradient(90deg, #4668a0, var(--deluxe-color), #4668a0);
+}
+
+.roomboguest::before {
+    background: linear-gradient(90deg, #5d7a55, var(--guest-color), #5d7a55);
+}
+
+.roomboxsingle::before {
+    background: linear-gradient(90deg, #8c6449, var(--single-color), #8c6449);
+}
+
+/* Room Content Styling */
+.roombox .text-center {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.roombox i {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    transition: var(--transition-normal);
+}
+
+.roomboxsuperior i { color: #d4bb4e; }
+.roomboxdelux i { color: var(--deluxe-color); }
+.roomboguest i { color: var(--guest-color); }
+.roomboxsingle i { color: var(--single-color); }
+
+.roombox:hover i {
+    transform: scale(1.1);
+}
+
+.roombox h3 {
+    color: var(--light-text);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.roombox .mb-1 {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Delete Button Styling */
+.roombox .btn-danger {
+    background: linear-gradient(135deg, rgba(193, 73, 73, 0.8), rgba(169, 57, 57, 0.9));
+    color: #f8f9fa;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: var(--transition-normal);
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: auto;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.roombox .btn-danger:hover {
+    background: linear-gradient(135deg, rgba(203, 83, 83, 0.9), rgba(193, 73, 73, 1));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .room {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .addroomsection {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+    
+    .room {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .room {
+        grid-template-columns: 1fr;
+    }
+    
+    .roombox {
+        min-height: 200px;
+    }
+}
