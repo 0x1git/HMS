@@ -41,7 +41,7 @@ if($usermail == true){
       <li><a href="#firstsection">Home</a></li>
       <li><a href="#secondsection">Rooms</a></li>
       <li><a href="#thirdsection">Facilites</a></li>
-      <li><a href="#contactus">contact us</a></li>
+      <li><a href="#contactus">Contact Us</a></li>
       <a href="./logout.php"><button class="btn btn-danger">Logout</button></a>
     </ul>
   </nav>
@@ -171,17 +171,20 @@ if($usermail == true){
 
                     
                         if ($result) {
-                            echo "<script>swal({
-                                title: 'Reservation successful',
-                                icon: 'success',
-                            });
-                        </script>";
-                        } else {
-                            echo "<script>swal({
-                                    title: 'Something went wrong',
-                                    icon: 'error',
+                            echo "<script>
+                                swal({
+                                    title: 'Reservation successful',
+                                    icon: 'success'
                                 });
-                        </script>";
+                                window.location.href = 'home.php';
+                            </script>";
+                        } else {
+                            echo "<script>
+                                swal({
+                                    title: 'Something went wrong',
+                                    icon: 'error'
+                                });
+                            </script>";
                         }
                 }
             }
@@ -306,5 +309,10 @@ if($usermail == true){
             closebox();
         }
     });
+
+    // Prevent form resubmission on page refresh
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
 </html>
