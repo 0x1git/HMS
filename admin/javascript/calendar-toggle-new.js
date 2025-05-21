@@ -147,12 +147,36 @@ document.addEventListener('DOMContentLoaded', function() {
                         calendarContainer.prepend(errorDiv);
                     });
             }
-        });
-
-        // Render calendar with fade in effect
+        });        // Render calendar with fade in effect
         calendar.render();
         setTimeout(() => {
             calendarContainer.style.opacity = '1';
         }, 50);
+          // Add global event delegation for edit and confirm buttons
+        document.addEventListener('click', function(event) {
+            // Handle edit buttons
+            const editBtn = event.target.closest('.edit-booking-btn');
+            if (editBtn) {
+                event.preventDefault();
+                event.stopPropagation();
+                const bookingId = editBtn.getAttribute('data-booking-id');
+                if (bookingId) {
+                    console.log('Edit button clicked for booking ID:', bookingId);
+                    window.location.href = `roombookedit.php?id=${bookingId}`;
+                }
+            }
+            
+            // Handle confirm buttons
+            const confirmBtn = event.target.closest('.confirm-booking-btn');
+            if (confirmBtn) {
+                event.preventDefault();
+                event.stopPropagation();
+                const bookingId = confirmBtn.getAttribute('data-booking-id');
+                if (bookingId && confirm('Are you sure you want to confirm this booking?')) {
+                    console.log('Confirm button clicked for booking ID:', bookingId);
+                    window.location.href = `roomconfirm.php?id=${bookingId}`;
+                }
+            }
+        });
     }
 });
