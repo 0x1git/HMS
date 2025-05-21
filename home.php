@@ -34,7 +34,7 @@ if($usermail == true){
 
 <body>  <nav>
     <div class="logo">
-      <img class="bluebirdlogo" src="./image/goldenpalacelogo.png" alt="logo">
+      <img class="bluebirdlogo" src="./image/goldenpalacelogo-glow.png" alt="logo">
       <p>GOLDEN PALACE</p>
     </div>
     <ul>
@@ -213,7 +213,7 @@ if($usermail == true){
         <div class="roombox">
           <div class="hotelphoto h2"></div>
           <div class="roomdata">
-            <h2>Delux Room</h2>
+            <h2>Deluxe Room</h2>
             <div class="services">
               <i class="fa-solid fa-wifi"></i>
               <i class="fa-solid fa-burger"></i>
@@ -264,9 +264,6 @@ if($usermail == true){
       </div>
       <div class="box">
         <h2>24*7 Gym</h2>
-      </div>
-      <div class="box">
-        <h2>Heli service</h2>
       </div>
     </div>
   </section>
