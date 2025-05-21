@@ -2,7 +2,7 @@
 
 $server = "localhost";
 $username = "root";
-$password = "Prathmesh123"; // Empty password for local development security
+$password = "228899"; // Empty password for local development security
 $database = "goldenpalacehotel"; // Updated to match your current database
 
 $conn = mysqli_connect($server, $username, $password, $database);

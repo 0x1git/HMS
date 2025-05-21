@@ -192,9 +192,8 @@ if($usermail == true){
   </section>
     
   <section id="secondsection"> 
-    <img src="./image/homeanimatebg.svg">
     <div class="ourroom">
-    <h1 class="head" style="color: gold;">≼ Our Rooms≽</h1>
+    <h1 class="head" style="color: gold; font-family: 'Cinizel', serif;">≼ Our Rooms≽</h1>
 
       <div class="roomselect">
         <div class="roombox">
@@ -252,7 +251,7 @@ if($usermail == true){
   </section>
 
   <section id="thirdsection">
-    <h1 class="head">≼ Facilities ≽</h1>
+    <h1 class="head" style="color: gold; font-family: 'Cinizel', serif;"> ≼ Facilities ≽ </h1>
     <div class="facility">
       <div class="box">
         <h2>Swiming pool</h2>
