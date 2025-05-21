@@ -151,8 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         calendar.render();
         setTimeout(() => {
             calendarContainer.style.opacity = '1';
-        }, 50);
-          // Add global event delegation for edit and confirm buttons
+        }, 50);        // Add global event delegation for edit and confirm buttons
         document.addEventListener('click', function(event) {
             // Handle edit buttons
             const editBtn = event.target.closest('.edit-booking-btn');
@@ -162,6 +161,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const bookingId = editBtn.getAttribute('data-booking-id');
                 if (bookingId) {
                     console.log('Edit button clicked for booking ID:', bookingId);
+                    
+                    // Close any open tooltips first to prevent UI issues
+                    const tooltips = document.querySelectorAll('.tooltip');
+                    tooltips.forEach(tooltip => {
+                        const tooltipInstance = bootstrap.Tooltip.getInstance(tooltip);
+                        if (tooltipInstance) {
+                            tooltipInstance.hide();
+                        }
+                    });
+                    
+                    // Navigate to edit page
                     window.location.href = `roombookedit.php?id=${bookingId}`;
                 }
             }
@@ -172,6 +182,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.preventDefault();
                 event.stopPropagation();
                 const bookingId = confirmBtn.getAttribute('data-booking-id');
+                
+                // Close any open tooltips first
+                const tooltips = document.querySelectorAll('.tooltip');
+                tooltips.forEach(tooltip => {
+                    const tooltipInstance = bootstrap.Tooltip.getInstance(tooltip);
+                    if (tooltipInstance) {
+                        tooltipInstance.hide();
+                    }
+                });
+                
                 if (bookingId && confirm('Are you sure you want to confirm this booking?')) {
                     console.log('Confirm button clicked for booking ID:', bookingId);
                     window.location.href = `roomconfirm.php?id=${bookingId}`;

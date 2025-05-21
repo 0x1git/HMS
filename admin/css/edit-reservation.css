@@ -1,0 +1,273 @@
+/* Edit Reservation Luxury Theme */
+.guestdetailpanelform .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(201, 165, 92, 0.3);
+}
+
+.guestdetailpanelform .head h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-color);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.guestdetailpanelform .head i {
+    font-size: 24px;
+    color: var(--light-text);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.guestdetailpanelform .head i:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.guestdetailpanelform .middle {
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-height: calc(90vh - 140px);
+    overflow-y: auto;
+}
+
+.guestdetailpanelform .middle::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.guestdetailpanelform .middle::-webkit-scrollbar-track {
+    background: rgba(13, 26, 66, 0.5);
+    border-radius: 10px;
+}
+
+.guestdetailpanelform .middle::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #c9a55c, #e5ca94);
+    border-radius: 10px;
+}
+
+.guestdetailpanelform .guestinfo,
+.guestdetailpanelform .reservationinfo {
+    background: rgba(42, 51, 82, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(201, 165, 92, 0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.guestdetailpanelform h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(201, 165, 92, 0.2);
+    padding-bottom: 10px;
+}
+
+.guestdetailpanelform input[type="text"],
+.guestdetailpanelform input[type="email"],
+.guestdetailpanelform select,
+.guestdetailpanelform input[type="date"] {
+    background: rgba(13, 26, 66, 0.6);
+    border: 1px solid rgba(201, 165, 92, 0.3);
+    color: var(--light-text);
+    padding: 12px 15px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    transition: var(--transition-fast);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.guestdetailpanelform input[type="text"]:focus,
+.guestdetailpanelform input[type="email"]:focus,
+.guestdetailpanelform select:focus,
+.guestdetailpanelform input[type="date"]:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(201, 165, 92, 0.3);
+    outline: none;
+}
+
+.guestdetailpanelform select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23c9a55c' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 15px) center;
+    padding-right: 35px;
+}
+
+.guestdetailpanelform .datesection {
+    display: flex;
+    gap: 15px;
+}
+
+.guestdetailpanelform .datesection span {
+    flex: 1;
+}
+
+.guestdetailpanelform .datesection label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--light-text);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.guestdetailpanelform .datesection input {
+    width: 100%;
+}
+
+.guestdetailpanelform .line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201, 165, 92, 0.3), transparent);
+}
+
+.guestdetailpanelform .footer {
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(201, 165, 92, 0.1);
+}
+
+.guestdetailpanelform .footer button {
+    background: linear-gradient(45deg, #c9a55c, #d5bb7a);
+    border: none;
+    color: #0d1a42;
+    font-weight: 600;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.guestdetailpanelform .footer button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Option text color */
+.guestdetailpanelform select option {
+    background-color: #0d1a42;
+    color: #fff;
+}
+
+/* Placeholder color */
+.guestdetailpanelform ::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Calendar icon color */
+.guestdetailpanelform input[type="date"] {
+    position: relative;
+    background: rgba(13, 26, 66, 0.6);
+    color-scheme: dark;
+}
+
+.guestdetailpanelform input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: invert(1) brightness(0.8) sepia(100%) saturate(500%) hue-rotate(15deg);
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 5px;
+    z-index: 10;
+}
+
+.guestdetailpanelform input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Fancy focus effects */
+.guestdetailpanelform input:focus,
+.guestdetailpanelform select:focus,
+.guestdetailpanelform input[type="date"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(201, 165, 92, 0.25), 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Animation when form appears */
+@keyframes guestinfoform {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fix for placeholder color in Firefox */
+.guestdetailpanelform input::placeholder,
+.guestdetailpanelform select::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+}
+
+/* Custom luxury button */
+.luxury-btn {
+    background: linear-gradient(45deg, #c9a55c, #e5ca94) !important;
+    border: none !important;
+    color: #0d1a42 !important;
+    font-weight: 600 !important;
+    padding: 12px 30px !important;
+    font-size: 16px !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.luxury-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 18px rgba(201, 165, 92, 0.4) !important;
+    background: linear-gradient(45deg, #d5bb7a, #c9a55c) !important;
+}
+
+/* Scrollbar for the form */
+#editpanel::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+#editpanel::-webkit-scrollbar-track {
+    background: rgba(13, 26, 66, 0.5);
+    border-radius: 10px;
+}
+
+#editpanel::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #c9a55c, #e5ca94);
+    border-radius: 10px;
+}
+
+/* Background patterns for luxury feel */
+#editpanel::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a55c' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+    opacity: 0.4;
+    pointer-events: none;
+}

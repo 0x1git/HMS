@@ -1,0 +1,114 @@
+/* 
+ * Consistency Fixes - Golden Palace Hotel
+ * This stylesheet ensures consistency between calendar and table views
+ */
+
+/* Consistent button styling across views */
+.btn-primary {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover, 
+.btn-primary:focus {
+    background: linear-gradient(135deg, #2980b9, #1a5276);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    background: linear-gradient(135deg, #27ae60, #1e8449);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background: linear-gradient(135deg, #c0392b, #922b21);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* Tooltip enhancements */
+.tooltip {
+    opacity: 1 !important;
+}
+
+.tooltip-inner {
+    background: linear-gradient(135deg, rgba(20, 35, 80, 0.95), rgba(13, 26, 66, 0.98)) !important;
+    border: 1px solid rgba(201, 165, 92, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 10px 15px !important;
+    max-width: 300px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: rgba(201, 165, 92, 0.4) !important;
+}
+
+.tooltip-guest-info {
+    margin-bottom: 8px;
+}
+
+/* Calendar status badges */
+.status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-badge.confirm,
+.status-badge.confirmed {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.status-badge.pending,
+.status-badge.notconfirm {
+    background-color: rgba(201, 165, 92, 0.15);
+    color: #e0c088;
+    border: 1px solid rgba(201, 165, 92, 0.3);
+}
+
+/* Make buttons in events more visible */
+.fc-event-main-content .event-actions {
+    opacity: 1 !important;
+    margin-top: 5px;
+}
+
+/* Enhance focus states for better accessibility */
+button:focus,
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(201, 165, 92, 0.3) !important;
+}
