@@ -1,0 +1,251 @@
+/* Enhanced spacing for room counter sections */
+.occupancy-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 35px; /* Increased bottom margin for better spacing */
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    position: relative; /* For decorative elements */
+}
+
+/* Add decorative separator below occupancy info */
+.occupancy-info::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201, 165, 92, 0), rgba(201, 165, 92, 0.5), rgba(201, 165, 92, 0));
+}
+
+/* Enhanced location info styling */
+.locations-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px; /* Increased padding */
+    margin-top: 35px; /* Increased from 30px for better spacing */
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Add a decorative gold accent edge */
+.locations-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(201, 165, 92, 0.2), rgba(201, 165, 92, 0.8), rgba(201, 165, 92, 0.2));
+}
+
+/* Enhanced location tags */
+.location-tag {
+    background: rgba(201, 165, 92, 0.15);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--accent-light);
+    transition: var(--transition-normal);
+    display: inline-block;
+    margin: 5px;
+}
+
+.location-tag:hover {
+    background: rgba(201, 165, 92, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Locations list styling */
+.locations-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+/* Add animation for fade-in */
+.room-counter.fade-in .occupancy-info,
+.room-counter.fade-in .locations-info {
+    animation: fadeIn 0.6s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.room-counter.fade-in .locations-info {
+    animation-delay: 0.5s;
+}
+
+/* Add visual section separator within room counter */
+.counter-stats {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.counter-stats::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(201, 165, 92, 0), 
+        rgba(201, 165, 92, 0.4), 
+        rgba(201, 165, 92, 0)
+    );
+}
+
+/* Add a subtle glow effect to the room counter on hover */
+.room-counter:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25), 0 0 15px rgba(201, 165, 92, 0.1);
+}
+
+/* Improve animation timing for elements */
+.room-counter.fade-in .counter-title {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.room-counter.fade-in .counter-stats {
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+}
+
+/* Styling for section separator */
+.section-separator {
+    height: 30px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.section-separator.animated {
+    opacity: 1;
+}
+
+.section-separator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(201, 165, 92, 0), 
+        rgba(201, 165, 92, 0.3), 
+        rgba(201, 165, 92, 0)
+    );
+}
+
+.section-separator::after {
+    content: '\f0d7'; /* Down arrow */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--accent-color);
+    background-color: rgba(13, 26, 66, 0.9);
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+/* Animation for occupancy and locations sections */
+.occupancy-info,
+.locations-info {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.occupancy-info.animated,
+.locations-info.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+    .room-counter {
+        padding: 15px;
+    }
+    
+    .counter-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .stat-box {
+        max-width: calc(33.33% - 15px);
+        margin-bottom: 15px;
+    }
+    
+    .occupancy-info, 
+    .locations-info {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .occupancy-info::after {
+        bottom: -15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .stat-box {
+        max-width: calc(50% - 15px);
+    }
+    
+    .counter-title h2 {
+        font-size: 20px;
+    }
+    
+    .counter-title i {
+        font-size: 20px;
+    }
+    
+    .occupancy-stats {
+        flex-wrap: wrap;
+    }
+    
+    .occupancy-item {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .room-counter {
+        margin: 15px 0;
+    }
+    
+    .stat-box {
+        max-width: 100%;
+    }
+    
+    .occupancy-item {
+        width: 100%;
+    }
+    
+    .locations-list {
+        justify-content: center;
+    }
+}

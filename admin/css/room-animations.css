@@ -109,6 +109,43 @@
     border: 1px solid rgba(201, 165, 92, 0.2);
 }
 
+/* Location tags in counter */
+.locations-info {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.locations-title {
+    color: var(--accent-color);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.locations-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.location-tag {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(201, 165, 92, 0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--light-text);
+    display: inline-block;
+}
+
+.location-tag:hover {
+    background: rgba(201, 165, 92, 0.1);
+    transform: translateY(-2px);
+}
+
 /* Additional Room Card Enhancements */
 .room-icon {
     position: relative;

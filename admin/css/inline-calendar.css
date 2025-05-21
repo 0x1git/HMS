@@ -1,0 +1,293 @@
+/* Inline Calendar Styles */
+.calendar-container {
+    margin: 10px 0;
+    padding: 0;
+    background: transparent;
+    width: 100%;
+    min-height: 600px; /* Minimum height to ensure visibility */
+    height: calc(100vh - 180px); /* Adjusted to account for navbar and other elements */
+    overflow: hidden;
+}
+
+.calendar-card {
+    background-color: rgba(13, 26, 66, 0.8);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    margin-bottom: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-card .card-header {
+    background-color: rgba(13, 26, 66, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+}
+
+.calendar-title {
+    color: #fff;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+/* Calendar Styling */
+.calendar-card .card-body {
+    flex: 1;
+    overflow: hidden;
+    padding: 10px;
+}
+
+#calendar {
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    min-height: 500px; /* Ensure minimum height */
+}
+
+/* FullCalendar Overrides */
+.fc .fc-toolbar-title {
+    color: #fff;
+    font-size: 1.4rem !important; /* Ensure title is visible */
+}
+
+/* Make sure events are visible with adequate spacing */
+.fc-event {
+    margin: 1px 0;
+    padding: 2px 4px;
+}
+
+/* List View Specific Styling */
+.fc-list-day-cushion {
+    background-color: rgba(55, 90, 127, 0.8) !important;
+}
+
+.fc-list-event:hover td {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.fc-list-event-title {
+    font-weight: 500 !important;
+}
+
+.fc-list-day-text, .fc-list-day-side-text {
+    color: white !important;
+}
+
+.fc-list-table td, .fc-list-table th {
+    padding: 10px 14px !important;
+}
+
+.fc .fc-button-primary {
+    background-color: #375a7f;
+    border-color: #375a7f;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: #2b4764;
+    border-color: #2b4764;
+}
+
+.fc th {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.fc td {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.fc-day-today {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Event Styling */
+.booking-event,
+.fc-daygrid-event {
+    border-radius: 4px;
+    border: none !important;
+    font-size: 0.8rem;
+    padding: 2px 4px;
+    margin: 1px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Ensure event text is visible */
+.fc-event-title {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status-confirm,
+.fc-daygrid-event[style*="#2ecc71"] {
+    background-color: #2ecc71 !important;
+    color: #fff !important;
+    border-color: #27ae60 !important;
+}
+
+.status-notconfirm,
+.fc-daygrid-event[style*="#f39c12"] {
+    background-color: #f39c12 !important;
+    color: #333 !important;
+    border-color: #e67e22 !important;
+}
+
+/* Filter Panel */
+#filterPanel {
+    background-color: rgba(13, 26, 66, 0.7);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+#filterPanel .form-label {
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+/* Action buttons in list view */
+.list-event-actions {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fc-list-event:hover .list-event-actions {
+    display: inline-flex;
+}
+
+.list-event-actions .btn {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.list-event-actions .btn:hover {
+    opacity: 1;
+}
+
+/* Adjust list event title to make room for actions */
+.fc-list-event-title {
+    position: relative;
+    padding-right: 100px !important;
+}
+
+/* Make status badges more prominent */
+.fc-list-event .badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+    font-weight: 500;
+}
+
+/* Add subtle divider between list items */
+.fc-list-event:not(:last-child) td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Enhanced List View Styling */
+.fc-list-view {
+    background: rgba(13, 26, 66, 0.7);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* Enhanced list date headers */
+.fc .fc-list-day > * {
+    background-color: rgba(55, 90, 127, 0.9) !important;
+    color: #fff !important;
+    font-size: 1.1rem !important;
+    padding: 12px 16px !important;
+    font-weight: 500 !important;
+}
+
+.fc .fc-list-day-text,
+.fc .fc-list-day-side-text {
+    font-weight: 500 !important;
+}
+
+/* List items */
+.fc-list-event {
+    transition: all 0.2s ease;
+    cursor: pointer !important;
+}
+
+.fc-theme-standard .fc-list-day + .fc-list-event {
+    margin-top: 6px;
+}
+
+.fc-theme-standard .fc-list-event:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateX(4px);
+}
+
+.fc-list-event-dot {
+    border-width: 6px !important;
+    margin-top: 7px !important;
+}
+
+/* List event time column */
+.fc .fc-list-event-time {
+    width: 120px !important;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7) !important;
+    padding: 16px 14px !important;
+}
+
+/* List event title column */
+.fc .fc-list-event-title {
+    font-size: 0.95rem;
+    padding: 16px 14px !important;
+    color: #fff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .calendar-controls {
+        margin-top: 10px;
+    }
+    
+    .calendar-title {
+        font-size: 1.1rem;
+    }
+    
+    #filterPanel .col-md-3 {
+        margin-bottom: 10px;
+    }
+    
+    #calendar {
+        min-height: 400px;
+        height: calc(100vh - 250px);
+    }
+    
+    .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .fc .fc-toolbar-title {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Ensure buttons are properly sized on mobile */
+    .fc-button {
+        padding: 0.2rem 0.5rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Handle small height screens */
+@media (max-height: 700px) {
+    .calendar-container {
+        height: 500px;
+        min-height: 500px;
+    }
+}

@@ -41,9 +41,8 @@
 					$chart_data = '';
 					$tot = 0;
 					while($row = mysqli_fetch_array($result))
-					{
-              $chart_data .= "{ date:'".$row["cout"]."', profit:".$row["finaltotal"]*10/100 ."}, ";
-              $tot = $tot + $row["finaltotal"]*10/100;
+					{              $chart_data .= "{ date:'".$row["cout"]."', profit:".$row["finaltotal"]."}, ";
+              $tot = $tot + $row["finaltotal"];
 					}
 
 					$chart_data = substr($chart_data, 0, -2);
