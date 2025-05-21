@@ -544,29 +544,38 @@ nav ul li button.btn-danger {
 }
 
 .guestdetailpanelform .footer {
-    padding: 25px 30px;
+    padding: 20px;
     border-top: 2px solid var(--gold-primary);
     text-align: center;
     background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin-top: 10px;
 }
 
 .guestdetailpanelform .btn-success {
     background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
     border: none;
-    padding: 15px 40px;
-    font-size: 18px;
+    padding: 12px 50px;
+    font-size: 20px;
     font-weight: 500;
+    font-family: 'Cinizel', serif;
     color: var(--text-dark);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    line-height: 1.2;
+    vertical-align: middle;
+    position: relative;
+    top: -5px;
 }
 
 .guestdetailpanelform .btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
     background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
 }
 
