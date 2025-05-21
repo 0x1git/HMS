@@ -227,10 +227,17 @@ include '../config.php';
                         icon: 'error',
                     });
                     </script>";
-                }
-                else{
+                }                else{
                     $sta = "NotConfirm";
-                    $sql = "INSERT INTO roombook(Name,Email,Country,Phone,RoomType,Bed,NoofRoom,Meal,cin,cout,stat,nodays) VALUES ('$Name','$Email','$Country','$Phone','$RoomType','$Bed','$NoofRoom','$Meal','$cin','$cout','$sta',datediff('$cout','$cin'))";
+                    
+                    // Calculate days difference using PHP DateTime
+                    $date1 = new DateTime($cin);
+                    $date2 = new DateTime($cout);
+                    $interval = $date1->diff($date2);
+                    $nodays = $interval->days;
+                    
+                    // Use the properly calculated days
+                    $sql = "INSERT INTO roombook(Name,Email,Country,Phone,RoomType,Bed,NoofRoom,Meal,cin,cout,stat,nodays) VALUES ('$Name','$Email','$Country','$Phone','$RoomType','$Bed','$NoofRoom','$Meal','$cin','$cout','$sta','$nodays')";
                     $result = mysqli_query($conn, $sql);
 
                     // if($f1=="NO")
@@ -294,13 +301,28 @@ include '../config.php';
                 <button class="exportexcel" id="exportexcel" name="exportexcel" type="submit"><i class="fa-solid fa-file-arrow-down"></i></button>
             </form>
         </div>
-    </div>
-
-    <div class="roombooktable table-responsive-xl">
+    </div>    <div class="roombooktable table-responsive-xl">
         <?php
-            $roombooktablesql = "SELECT * FROM roombook";
+            // Force a fresh database connection to ensure we get the latest data
+            if (!$conn || !mysqli_ping($conn)) {
+                include '../config.php';
+            }
+            
+            // Use query to get all room bookings and order by most recent first
+            $roombooktablesql = "SELECT * FROM roombook ORDER BY id DESC";
             $roombookresult = mysqli_query($conn, $roombooktablesql);
+            
+            // Check for SQL errors
+            if (!$roombookresult) {
+                echo '<div class="alert alert-danger">Error retrieving bookings: ' . mysqli_error($conn) . '</div>';
+            }
+            
             $nums = mysqli_num_rows($roombookresult);
+            
+            // Show a message if no bookings found
+            if ($nums == 0) {
+                echo '<div class="alert alert-info">No room bookings found in the database.</div>';
+            }
         ?>
         <table class="table table-bordered" id="table-data">
             <thead>
@@ -324,7 +346,9 @@ include '../config.php';
 
             <tbody>
             <?php
-            while ($res = mysqli_fetch_array($roombookresult)) {
+            // Ensure we properly handle the result
+            if ($roombookresult && mysqli_num_rows($roombookresult) > 0) 
+                while ($res = mysqli_fetch_array($roombookresult)) {
             ?>
                 <tr>
                     <td><?php echo $res['id'] ?></td>

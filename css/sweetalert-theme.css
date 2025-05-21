@@ -1,0 +1,82 @@
+/* Enhanced SweetAlert Styling for Hotel Golden Palace */
+.swal-overlay {
+    z-index: 9999 !important; /* Ensure it's above all other elements */
+    background-color: rgba(0, 0, 0, 0.7); /* Darken the background for better visibility */
+}
+
+.swal-modal {
+    z-index: 10000 !important; /* Higher than the overlay */
+    animation: swal-zoom 0.3s ease-in-out; /* Add animation */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
+    border: 1px solid #D4AF37;
+}
+
+.swal-title {
+    font-family: 'Playfair Display', serif;
+    color: #D4AF37 !important;
+    font-weight: 600;
+    margin-bottom: 20px !important;
+}
+
+.swal-text {
+    font-family: 'Poppins', sans-serif;
+    color: #fff !important;
+    font-size: 16px;
+}
+
+.swal-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+}
+
+.swal-button--confirm {
+    background: linear-gradient(to right, #C5A028, #D4AF37) !important;
+    color: #333 !important;
+}
+
+.swal-button--confirm:hover {
+    background: linear-gradient(to right, #D4AF37, #F4E4BC) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.swal-icon--success {
+    border-color: #D4AF37 !important;
+}
+
+.swal-icon--success__line {
+    background-color: #D4AF37 !important;
+}
+
+.swal-icon--success__ring {
+    border-color: #D4AF37 !important;
+}
+
+.swal-icon--warning {
+    border-color: #F8BB86;
+}
+
+.swal-icon--error {
+    border-color: #F27474;
+}
+
+.swal-icon--error__line {
+    background-color: #F27474;
+}
+
+/* Animation for sweet alerts */
+@keyframes swal-zoom {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
