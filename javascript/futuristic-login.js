@@ -5,6 +5,15 @@ const btns = document.querySelectorAll('.btns');
 const authsection = document.querySelectorAll('.authsection');
 const formInputs = document.querySelectorAll('.form-control');
 
+// Initialize styles for smooth animations
+login.style.opacity = '1';
+login.style.transform = 'translateY(0)';
+login.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+signup.style.opacity = '0';
+signup.style.transform = 'translateY(-20px)';
+signup.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
 // Login/Signup page toggle functions with animations
 function signuppage() {
   login.style.opacity = '0';
@@ -36,15 +45,6 @@ function loginpage() {
   }, 300);
 }
 
-// Initialize styles for smooth animations
-login.style.opacity = '1';
-login.style.transform = 'translateY(0)';
-login.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-
-signup.style.opacity = '0';
-signup.style.transform = 'translateY(-20px)';
-signup.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-
 // User/Staff role toggle with slide effect
 const slideNav = function(manual) {
   // Remove active class from all buttons and sections
@@ -68,15 +68,16 @@ btns.forEach((btn, i) => {
   });
 });
 
-// Add subtle animations to form inputs
+// Add input focus effects
 formInputs.forEach(input => {
-  // Add focus effects
-  input.addEventListener('focus', function() {
-    this.parentElement.classList.add('focused');
+  input.addEventListener('focus', () => {
+    input.parentElement.classList.add('focused');
   });
   
-  input.addEventListener('blur', function() {
-    this.parentElement.classList.remove('focused');
+  input.addEventListener('blur', () => {
+    if (!input.value) {
+      input.parentElement.classList.remove('focused');
+    }
   });
 });
 

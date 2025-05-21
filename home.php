@@ -30,19 +30,11 @@ if($usermail == true){
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="./admin/css/roombook.css">
-    <style>
-      #guestdetailpanel{
-        display: none;
-      }
-      #guestdetailpanel .middle{
-        height: 450px;
-      }
-    </style>
 </head>
 
 <body>  <nav>
     <div class="logo">
-      <img class="bluebirdlogo" src="./image/goldenpalacelogo.png" alt="logo">
+      <img class="bluebirdlogo" src="./image/goldenpalacelogo-glow.png" alt="logo">
       <p>GOLDEN PALACE</p>
     </div>
     <ul>
@@ -77,7 +69,7 @@ if($usermail == true){
       <div id="guestdetailpanel">
         <form action="" method="POST" class="guestdetailpanelform">
             <div class="head">
-                <h3>RESERVATION</h3>
+                <h3 style="color: gold;">RESERVATION</h3>
                 <i class="fa-solid fa-circle-xmark" onclick="closebox()"></i>
             </div>
             <div class="middle">
@@ -200,9 +192,9 @@ if($usermail == true){
   </section>
     
   <section id="secondsection"> 
-    <img src="./image/homeanimatebg.svg">
     <div class="ourroom">
-      <h1 class="head">≼ Our room ≽</h1>
+    <h1 class="head" style="color: gold; font-family: 'Cinizel', serif;">≼ Our Rooms≽</h1>
+
       <div class="roomselect">
         <div class="roombox">
           <div class="hotelphoto h1"></div>
@@ -221,7 +213,7 @@ if($usermail == true){
         <div class="roombox">
           <div class="hotelphoto h2"></div>
           <div class="roomdata">
-            <h2>Delux Room</h2>
+            <h2>Deluxe Room</h2>
             <div class="services">
               <i class="fa-solid fa-wifi"></i>
               <i class="fa-solid fa-burger"></i>
@@ -259,7 +251,7 @@ if($usermail == true){
   </section>
 
   <section id="thirdsection">
-    <h1 class="head">≼ Facilities ≽</h1>
+    <h1 class="head" style="color: gold; font-family: 'Cinizel', serif;"> ≼ Facilities ≽ </h1>
     <div class="facility">
       <div class="box">
         <h2>Swiming pool</h2>
@@ -272,9 +264,6 @@ if($usermail == true){
       </div>
       <div class="box">
         <h2>24*7 Gym</h2>
-      </div>
-      <div class="box">
-        <h2>Heli service</h2>
       </div>
     </div>
   </section>
@@ -292,14 +281,30 @@ if($usermail == true){
 </body>
 
 <script>
-
     var bookbox = document.getElementById("guestdetailpanel");
 
-    openbookbox = () =>{
-      bookbox.style.display = "flex";
+    function openbookbox() {
+        bookbox.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
     }
-    closebox = () =>{
-      bookbox.style.display = "none";
+
+    function closebox() {
+        bookbox.style.display = "none";
+        document.body.style.overflow = "auto"; // Restore background scrolling
     }
+
+    // Close panel when clicking outside
+    bookbox.addEventListener('click', function(e) {
+        if (e.target === bookbox) {
+            closebox();
+        }
+    });
+
+    // Close panel when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && bookbox.style.display === "flex") {
+            closebox();
+        }
+    });
 </script>
 </html>
