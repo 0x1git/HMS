@@ -14,12 +14,11 @@
     <title>Golden Palace - Payment Management</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>    
-    <!-- Font Awesome -->    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>      <!-- Font Awesome -->    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/luxury-theme.css">    <link rel="stylesheet" href="css/luxury-payment-cards.css">
-    <link rel="stylesheet" href="css/luxury-payment.css">    <link rel="stylesheet" href="css/luxury-visual-enhancements.css">    <script>
+    <link rel="stylesheet" href="css/luxury-payment-cards.css">
+    <link rel="stylesheet" href="css/luxury-payment.css">    <link rel="stylesheet" href="css/luxury-visual-enhancements.css"><script>
         // Statistics calculation functions
         function updateStats() {
             let cards = document.getElementsByClassName('payment-card');
