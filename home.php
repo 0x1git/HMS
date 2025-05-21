@@ -41,7 +41,7 @@ if($usermail == true){
       <li><a href="#firstsection">Home</a></li>
       <li><a href="#secondsection">Rooms</a></li>
       <li><a href="#thirdsection">Facilites</a></li>
-      <li><a href="#contactus">contact us</a></li>
+      <li><a href="#contactus">Contact Us</a></li>
       <a href="./logout.php"><button class="btn btn-danger">Logout</button></a>
     </ul>
   </nav>
