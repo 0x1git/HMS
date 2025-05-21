@@ -41,13 +41,11 @@ const calendarConfig = {
             <strong>${guest}</strong><br>
             ${roomType} ${roomno}<br>
             <span class="status-badge ${status.toLowerCase()}">${status}</span><br>
-            <div class="tooltip-actions mt-2">
-                ${status !== 'Confirm' ? 
-                    `<button onclick="handleConfirmBooking('${info.event.id}', event)" class="btn btn-success btn-sm me-2">
+            <div class="tooltip-actions mt-2">                ${status !== 'Confirm' ? 
+                    `<button class="btn btn-success btn-sm me-2 confirm-booking-btn" data-booking-id="${info.event.id}">
                         <i class="fas fa-check"></i> Confirm
                     </button>` : ''
-                }
-                <button onclick="handleEditBooking('${info.event.id}', event)" class="btn btn-primary btn-sm">
+                }<button class="btn btn-primary btn-sm edit-booking-btn" data-booking-id="${info.event.id}">
                     <i class="fas fa-edit"></i> Edit
                 </button>
             </div>
@@ -75,13 +73,11 @@ const calendarConfig = {
                         <div class="event-title">${guest}</div>
                         <div class="event-details">
                             <span class="room-type">${roomType}</span>
-                            <span class="status-badge ${status.toLowerCase()}">${status}</span>
-                            ${status !== 'Confirm' ? `
-                                <button onclick="handleConfirmBooking('${arg.event.id}', event)" class="btn btn-success btn-xs ms-2">
+                            <span class="status-badge ${status.toLowerCase()}">${status}</span>                            ${status !== 'Confirm' ? `
+                                <button class="btn btn-success btn-xs ms-2 confirm-booking-btn" data-booking-id="${arg.event.id}">
                                     <i class="fas fa-check"></i> Confirm
                                 </button>
-                            ` : ''}
-                            <button onclick="handleEditBooking('${arg.event.id}', event)" class="btn btn-primary btn-xs ms-2">
+                            ` : ''}<button class="btn btn-primary btn-xs ms-2 edit-booking-btn" data-booking-id="${arg.event.id}">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
                         </div>
@@ -96,13 +92,11 @@ const calendarConfig = {
                     <div class="event-title">${guest}</div>
                     <div class="event-room">
                         ${roomType}
-                        <div class="event-actions mt-1">
-                            ${status !== 'Confirm' ? `
-                                <button onclick="handleConfirmBooking('${arg.event.id}', event)" class="btn btn-success btn-xs me-1">
+                        <div class="event-actions mt-1">                            ${status !== 'Confirm' ? `
+                                <button class="btn btn-success btn-xs me-1 confirm-booking-btn" data-booking-id="${arg.event.id}">
                                     <i class="fas fa-check"></i>
                                 </button>
-                            ` : ''}
-                            <button onclick="handleEditBooking('${arg.event.id}', event)" class="btn btn-primary btn-xs">
+                            ` : ''}<button class="btn btn-primary btn-xs edit-booking-btn" data-booking-id="${arg.event.id}">
                                 <i class="fas fa-edit"></i>
                             </button>
                         </div>

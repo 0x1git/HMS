@@ -369,7 +369,9 @@ include '../config.php';
 <script src="./javascript/status-styling.js"></script>
 
 <!-- Calendar implementation -->
+<script src="./javascript/calendar-actions.js"></script>
 <script src="./javascript/calendar-config.js"></script>
 <script src="./javascript/calendar-toggle-new.js"></script>
+<script src="./javascript/calendar-edit-debug.js"></script>
 
 </html>
