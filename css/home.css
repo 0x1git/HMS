@@ -305,7 +305,7 @@ nav ul li a:hover::after {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(8px);
     z-index: 2000;
     justify-content: center;
@@ -313,12 +313,12 @@ nav ul li a:hover::after {
 }
 
 .guestdetailpanelform {
-    background: linear-gradient(135deg, #1A1A1A, #2C2C2C);
+    background: linear-gradient(135deg, var(--dark-bg), #2C2C2C);
     width: 90%;
     max-width: 1200px;
     border-radius: 20px;
-    border: 1px solid var(--gold-primary);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--gold-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     animation: slideUp 0.4s ease;
 }
 
@@ -335,69 +335,137 @@ nav ul li a:hover::after {
 
 .guestdetailpanelform .head {
     padding: 25px 30px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 2px solid var(--gold-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .guestdetailpanelform .head h3 {
     font-family: 'Playfair Display', serif;
     color: var(--gold-primary);
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .guestdetailpanelform .head i {
     color: var(--gold-primary);
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 .guestdetailpanelform .head i:hover {
     transform: rotate(90deg);
+    color: var(--gold-light);
 }
 
 .guestdetailpanelform .middle {
     display: flex;
-    padding: 30px;
-    gap: 30px;
+    padding: 40px;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .guestdetailpanelform .guestinfo,
 .guestdetailpanelform .reservationinfo {
     flex: 1;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 25px;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(44, 44, 44, 0.95));
+    padding: 35px;
     border-radius: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    border: 2px solid var(--gold-primary);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.guestdetailpanelform .guestinfo::before,
+.guestdetailpanelform .reservationinfo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.05));
+    pointer-events: none;
 }
 
 .guestdetailpanelform h4 {
     color: var(--gold-primary);
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 26px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.guestdetailpanelform h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--gold-primary);
 }
 
 .guestdetailpanelform input,
 .guestdetailpanelform .selectinput {
     width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 8px;
     color: var(--text-light);
+    font-size: 16px;
     transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.guestdetailpanelform input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
 }
 
 .guestdetailpanelform input:focus,
 .guestdetailpanelform .selectinput:focus {
     outline: none;
     border-color: var(--gold-primary);
-    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.guestdetailpanelform input:hover,
+.guestdetailpanelform .selectinput:hover {
+    border-color: var(--gold-primary);
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.guestdetailpanelform .selectinput {
+    background-image: linear-gradient(45deg, transparent 50%, var(--gold-primary) 50%),
+                      linear-gradient(135deg, var(--gold-primary) 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1em + 2px),
+                         calc(100% - 15px) calc(1em + 2px);
+    background-size: 5px 5px,
+                    5px 5px;
+    background-repeat: no-repeat;
+}
+
+.guestdetailpanelform .selectinput option {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    padding: 12px;
+    font-size: 16px;
 }
 
 .guestdetailpanelform .datesection {
@@ -412,44 +480,56 @@ nav ul li a:hover::after {
 .guestdetailpanelform .datesection label {
     display: block;
     color: var(--gold-light);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .guestdetailpanelform .footer {
-    padding: 20px 30px;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 25px 30px;
+    border-top: 2px solid var(--gold-primary);
     text-align: center;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .guestdetailpanelform .btn-success {
     background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
     border: none;
-    padding: 12px 30px;
-    font-size: 16px;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: 500;
     color: var(--text-dark);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .guestdetailpanelform .btn-success:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
 }
 
 /* Custom scrollbar */
 body #guestdetailpanel .middle::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 body #guestdetailpanel .middle::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 body #guestdetailpanel .middle::-webkit-scrollbar-thumb {
-    background: #c9a55c;
-    border-radius: 3px;
+    background: var(--gold-primary);
+    border-radius: 4px;
+}
+
+body #guestdetailpanel .middle::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-secondary);
 }
 
 /* Responsive design */

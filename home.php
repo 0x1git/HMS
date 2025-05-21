@@ -69,7 +69,7 @@ if($usermail == true){
       <div id="guestdetailpanel">
         <form action="" method="POST" class="guestdetailpanelform">
             <div class="head">
-                <h3>RESERVATION</h3>
+                <h3 style="color: gold;">RESERVATION</h3>
                 <i class="fa-solid fa-circle-xmark" onclick="closebox()"></i>
             </div>
             <div class="middle">
