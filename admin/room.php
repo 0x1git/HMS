@@ -56,7 +56,7 @@ include '../config.php';
                 echo "<div class='alert alert-danger mt-3'>Error: All fields are required. Please fill in all the fields.</div>";
             } else {
                 $typeofroom = mysqli_real_escape_string($conn, $_POST['troom']);
-                $typeofbed = mysqli_real_escape_string($conn, $_POST['bed']);
+                $typeofbed = mysqli_real_escape_string($conn, $_POST['bed']); 
                 $place = mysqli_real_escape_string($conn, $_POST['place']);
                 // Get customer ID from the form or set default to 0 (no customer assigned)
                 $cusid = isset($_POST['cusid']) ? intval($_POST['cusid']) : 0;

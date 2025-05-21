@@ -15,6 +15,7 @@ session_start();
 
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./css/sweetalert-custom.css">
     <!-- aos animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- loading bar -->

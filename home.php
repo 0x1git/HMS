@@ -27,9 +27,9 @@ if($usermail == true){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- fontowesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <!-- sweet alert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- sweet alert -->    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="./admin/css/roombook.css">
+    <link rel="stylesheet" href="./css/sweetalert-theme.css">
 </head>
 
 <body>  <nav>
@@ -112,12 +112,11 @@ if($usermail == true){
 						<option value="Triple">Triple</option>
                         <option value="Quad">Quad</option>
 						<option value="None">None</option>
-                    </select>
-                    <select name="NoofRoom" class="selectinput">
+                    </select>                    <select name="NoofRoom" class="selectinput">
 						<option value selected >No of Room</option>
                         <option value="1">1</option>
-                        <!-- <option value="1">2</option>
-                        <option value="1">3</option> -->
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                     <select name="Meal" class="selectinput">
 						<option value selected >Meal</option>
@@ -125,15 +124,14 @@ if($usermail == true){
                         <option value="Breakfast">Breakfast</option>
 						<option value="Half Board">Half Board</option>
 						<option value="Full Board">Full Board</option>
-					</select>
-                    <div class="datesection">
+					</select>                    <div class="datesection">
                         <span>
                             <label for="cin"> Check-In</label>
-                            <input name="cin" type ="date">
+                            <input name="cin" type="date" id="cinField" required>
                         </span>
                         <span>
-                            <label for="cin"> Check-Out</label>
-                            <input name="cout" type ="date">
+                            <label for="cout"> Check-Out</label>
+                            <input name="cout" type="date" id="coutField" required>
                         </span>
                     </div>
                 </div>
@@ -143,49 +141,167 @@ if($usermail == true){
             </div>
         </form>
 
-        <!-- ==== room book php ====-->
-        <?php       
+        <!-- ==== room book php ====-->        <?php       
             if (isset($_POST['guestdetailsubmit'])) {
-                $Name = $_POST['Name'];
-                $Email = $_POST['Email'];
-                $Country = $_POST['Country'];
-                $Phone = $_POST['Phone'];
-                $RoomType = $_POST['RoomType'];
-                $Bed = $_POST['Bed'];
-                $NoofRoom = $_POST['NoofRoom'];
-                $Meal = $_POST['Meal'];
-                $cin = $_POST['cin'];
-                $cout = $_POST['cout'];
-
-                if($Name == "" || $Email == "" || $Country == ""){
+                // Sanitize input data to prevent SQL injection
+                $Name = mysqli_real_escape_string($conn, trim($_POST['Name']));
+                $Email = mysqli_real_escape_string($conn, trim($_POST['Email']));
+                $Country = mysqli_real_escape_string($conn, trim($_POST['Country']));
+                $Phone = mysqli_real_escape_string($conn, trim($_POST['Phone']));
+                $RoomType = mysqli_real_escape_string($conn, trim($_POST['RoomType']));
+                $Bed = mysqli_real_escape_string($conn, trim($_POST['Bed']));
+                $NoofRoom = mysqli_real_escape_string($conn, trim($_POST['NoofRoom']));
+                $Meal = mysqli_real_escape_string($conn, trim($_POST['Meal']));
+                $cin = mysqli_real_escape_string($conn, trim($_POST['cin']));
+                $cout = mysqli_real_escape_string($conn, trim($_POST['cout']));
+                
+                // Validation array to collect errors
+                $errors = array();
+                
+                // Improved validation to check all required fields
+                if(empty($Name)) $errors[] = "Name is required";
+                if(empty($Email)) $errors[] = "Email is required";
+                if(empty($Country) || $Country == "Select your country") $errors[] = "Country is required";
+                if(empty($Phone)) $errors[] = "Phone number is required";
+                if(empty($RoomType) || $RoomType == "Type Of Room") $errors[] = "Room type is required";
+                if(empty($Bed) || $Bed == "Bedding Type") $errors[] = "Bed type is required";
+                if(empty($NoofRoom) || $NoofRoom == "No of Room") $errors[] = "Number of rooms is required";
+                if(empty($Meal) || $Meal == "Meal") $errors[] = "Meal option is required";
+                if(empty($cin)) $errors[] = "Check-in date is required";
+                if(empty($cout)) $errors[] = "Check-out date is required";
+                
+                // Validate dates
+                if(!empty($cin) && !empty($cout)) {
+                    $checkIn = new DateTime($cin);
+                    $checkOut = new DateTime($cout);
+                    $today = new DateTime();
+                    
+                    // Reset time part to compare just the dates
+                    $today->setTime(0, 0, 0);
+                    $checkIn->setTime(0, 0, 0);
+                    $checkOut->setTime(0, 0, 0);
+                    
+                    if($checkIn < $today) {
+                        $errors[] = "Check-in date cannot be in the past";
+                    } elseif($checkIn >= $checkOut) {
+                        $errors[] = "Check-out date must be after check-in date";
+                    }
+                }
+                
+                // Display errors if any
+                if(!empty($errors)) {
+                    $errorMsg = implode("<br>", $errors);
                     echo "<script>swal({
-                        title: 'Fill the proper details',
-                        icon: 'error',
+                        title: 'Form Validation Error',
+                        html: true,
+                        text: '$errorMsg',
+                        icon: 'warning',
                     });
                     </script>";
-                }
-                else{
+                } else {
                     $sta = "NotConfirm";
-                    $sql = "INSERT INTO roombook(Name,Email,Country,Phone,RoomType,Bed,NoofRoom,Meal,cin,cout,stat,nodays) VALUES ('$Name','$Email','$Country','$Phone','$RoomType','$Bed','$NoofRoom','$Meal','$cin','$cout','$sta',datediff('$cout','$cin'))";
-                    $result = mysqli_query($conn, $sql);
-
                     
-                        if ($result) {
-                            echo "<script>
-                                document.getElementById('guestdetailpanel').style.display = 'none';
-                                swal({
-                                    title: 'Reservation successful',
-                                    icon: 'success'
-                                });
-                            </script>";
-                        } else {
-                            echo "<script>
-                                swal({
-                                    title: 'Fill the proper details',
-                                    icon: 'error'
-                                });
-                            </script>";
-                        }
+                    // Calculate the number of days between check-in and check-out
+                    $date1 = new DateTime($cin);
+                    $date2 = new DateTime($cout);
+                    $interval = $date1->diff($date2);
+                    $nodays = $interval->days;
+                    
+                    // Fix: Use properly sanitized data and correct day calculation
+                    $sql = "INSERT INTO roombook(Name, Email, Country, Phone, RoomType, Bed, NoofRoom, Meal, cin, cout, stat, nodays) 
+                            VALUES ('$Name', '$Email', '$Country', '$Phone', '$RoomType', '$Bed', '$NoofRoom', '$Meal', '$cin', '$cout', '$sta', '$nodays')";
+                    $result = mysqli_query($conn, $sql);
+                    
+                    if ($result) {
+                        // Clear form data to prevent resubmission
+                        $_POST = array();
+                        
+                        echo "<script>
+                            // Scroll to top of the page first
+                            window.scrollTo(0, 0);
+                            
+                            swal({
+                                title: 'Reservation Successful!',
+                                text: 'Thank you for booking with Golden Palace Hotel. Your reservation has been recorded.',
+                                icon: 'success',
+                                buttons: {
+                                    confirm: {
+                                        text: 'OK',
+                                        value: true,
+                                        visible: true,
+                                        className: 'btn btn-success',
+                                        closeModal: true
+                                    }
+                                },
+                                customClass: {
+                                    popup: 'swal-top',
+                                    container: 'swal-container'
+                                }
+                            }).then((value) => {
+                                if (value) {
+                                    // Redirect with a clean URL to avoid form resubmission
+                                    window.location.href = 'home.php';
+                                }
+                            });
+                        </script>";
+                        
+                        // Add CSS to position the success message at the top of the viewport
+                        echo "<style>
+                            .swal-top {
+                                position: fixed !important;
+                                top: 50% !important;
+                                left: 50% !important;
+                                transform: translate(-50%, -50%) !important;
+                                z-index: 9999 !important;
+                                margin: 0 !important;
+                            }
+                            .swal-container {
+                                position: fixed !important;
+                                top: 0 !important;
+                                left: 0 !important;
+                                width: 100% !important;
+                                height: 100% !important;
+                                z-index: 9998 !important;
+                                display: flex !important;
+                                align-items: center !important;
+                                justify-content: center !important;
+                            }
+                            .swal-modal {
+                                position: fixed !important;
+                                top: 50% !important;
+                                left: 50% !important;
+                                transform: translate(-50%, -50%) !important;
+                                z-index: 9999 !important;
+                                margin: 0 !important;
+                            }
+                        </style>";
+                        
+                        // Ensure modal is visible and centered
+                        echo "<script>
+                            setTimeout(function() {
+                                var modals = document.querySelectorAll('.swal-modal');
+                                if (modals.length > 0) {
+                                    modals.forEach(function(modal) {
+                                        modal.style.zIndex = '9999';
+                                        modal.style.display = 'flex';
+                                        modal.style.alignItems = 'center';
+                                        modal.style.justifyContent = 'center';
+                                    });
+                                }
+                                // Force scroll to top
+                                window.scrollTo(0, 0);
+                            }, 100);
+                        </script>";
+                    } else {
+                        echo "<script>
+                            swal({
+                                title: 'Database Error',
+                                text: 'Sorry, we could not process your reservation. Error: " . mysqli_error($conn) . "',
+                                icon: 'error'
+                            });
+                            console.error('SQL Error: " . mysqli_error($conn) . "');
+                        </script>";
+                    }
                 }
             }
             ?>
@@ -284,9 +400,39 @@ if($usermail == true){
 </body>
 
 <script>
-    var bookbox = document.getElementById("guestdetailpanel");
-
-    function openbookbox() {
+    var bookbox = document.getElementById("guestdetailpanel");    function openbookbox() {
+        // Clear any old form values first
+        var form = bookbox.querySelector('form');
+        if (form) {
+            form.reset();
+        }
+        
+        // Set default dates (today for check-in, tomorrow for check-out)
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+        
+        // Format dates as YYYY-MM-DD
+        var cinInput = document.getElementById('cinField');
+        var coutInput = document.getElementById('coutField');
+        
+        if (cinInput && coutInput) {
+            var todayFormatted = today.toISOString().split('T')[0];
+            var tomorrowFormatted = tomorrow.toISOString().split('T')[0];
+            
+            cinInput.value = todayFormatted;
+            coutInput.value = tomorrowFormatted;
+            
+            // Set min dates to prevent past bookings
+            cinInput.min = todayFormatted;
+            coutInput.min = tomorrowFormatted;
+            
+            // Store original values in case we need to reset
+            cinInput.dataset.defaultValue = todayFormatted;
+            coutInput.dataset.defaultValue = tomorrowFormatted;
+        }
+        
+        // Display the booking box
         bookbox.style.display = "flex";
         document.body.style.overflow = "hidden"; // Prevent background scrolling
     }
@@ -307,6 +453,34 @@ if($usermail == true){
     document.addEventListener('keydown', function(e) {
         if (e.key === "Escape" && bookbox.style.display === "flex") {
             closebox();
+        }
+    });
+
+    // Prevent form resubmission on page refresh
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+      // Update minimum check-out date when check-in date changes
+    document.addEventListener('DOMContentLoaded', function() {
+        var cinInput = document.getElementById('cinField');
+        if (cinInput) {
+            cinInput.addEventListener('change', function() {
+                var cinDate = new Date(this.value);
+                var coutInput = document.getElementById('coutField');
+                
+                if (coutInput) {
+                    // Set minimum check-out date to the day after check-in
+                    var minCheckOut = new Date(cinDate);
+                    minCheckOut.setDate(cinDate.getDate() + 1);
+                    var minCheckOutFormatted = minCheckOut.toISOString().split('T')[0];
+                    coutInput.min = minCheckOutFormatted;
+                    
+                    // If current check-out is before new check-in, update it
+                    if (new Date(coutInput.value) <= cinDate) {
+                        coutInput.value = minCheckOutFormatted;
+                    }
+                }
+            });
         }
     });
 </script>
